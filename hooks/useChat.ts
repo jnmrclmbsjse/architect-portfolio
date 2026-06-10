@@ -1,10 +1,34 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 
 export interface ChatMessage {
   role: "user" | "assistant";
   content: string;
+}
+
+const STORAGE_KEY = "portfolio-chat-messages";
+const MAX_MESSAGES = 40;
+
+function loadMessages(): ChatMessage[] {
+  try {
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (!stored) return [];
+    const parsed = JSON.parse(stored);
+    if (Array.isArray(parsed)) return parsed.slice(-MAX_MESSAGES);
+  } catch {}
+  return [];
+}
+
+function saveMessages(messages: ChatMessage[]) {
+  try {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+  } catch {}
+}
+
+function capMessages(messages: ChatMessage[]): ChatMessage[] {
+  if (messages.length <= MAX_MESSAGES) return messages;
+  return messages.slice(-MAX_MESSAGES);
 }
 
 export function useChat() {
@@ -13,6 +37,21 @@ export function useChat() {
   const [error, setError] = useState<string | null>(null);
   const [remaining, setRemaining] = useState(20);
   const abortRef = useRef<AbortController | null>(null);
+  const hydrated = useRef(false);
+
+  useEffect(() => {
+    if (!hydrated.current) {
+      hydrated.current = true;
+      const stored = loadMessages();
+      if (stored.length > 0) setMessages(stored);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (hydrated.current) {
+      saveMessages(messages);
+    }
+  }, [messages]);
 
   const sendMessage = useCallback(
     async (text: string) => {
@@ -21,7 +60,7 @@ export function useChat() {
 
       setError(null);
       const userMessage: ChatMessage = { role: "user", content: trimmed };
-      setMessages((prev) => [...prev, userMessage]);
+      setMessages((prev) => capMessages([...prev, userMessage]));
       setIsLoading(true);
 
       const history = messages.slice(-18);
@@ -57,7 +96,7 @@ export function useChat() {
         const decoder = new TextDecoder();
         let assistantContent = "";
 
-        setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+        setMessages((prev) => capMessages([...prev, { role: "assistant", content: "" }]));
 
         while (true) {
           const { done, value } = await reader.read();
@@ -94,6 +133,7 @@ export function useChat() {
     setMessages([]);
     setError(null);
     setIsLoading(false);
+    try { sessionStorage.removeItem(STORAGE_KEY); } catch {}
   }, []);
 
   return {

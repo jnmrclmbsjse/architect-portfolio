@@ -23,7 +23,12 @@ export function ChatMessage({ message, isStreaming }: ChatMessageProps) {
         {isUser ? (
           message.content
         ) : (
-          <Markdown>{message.content}</Markdown>
+          <>
+            <Markdown>{message.content}</Markdown>
+            {isStreaming && message.content && (
+              <span className="inline-block w-[2px] h-[1em] bg-foreground/70 animate-pulse align-text-bottom ml-0.5" />
+            )}
+          </>
         )}
         {isStreaming && !message.content && (
           <span className="inline-flex items-center gap-1">

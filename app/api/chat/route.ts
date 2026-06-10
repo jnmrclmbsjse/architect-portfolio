@@ -33,6 +33,22 @@ export async function POST(request: NextRequest) {
   if (!message || typeof message !== "string") {
     return NextResponse.json({ error: "Message is required" }, { status: 400 });
   }
+  if (message.length > 500) {
+    return NextResponse.json({ error: "Message is too long (max 500 characters)" }, { status: 400 });
+  }
+
+  const validRoles = new Set(["user", "assistant"]);
+  const validHistory = Array.isArray(history) && history.every(
+    (m: unknown) =>
+      typeof m === "object" && m !== null &&
+      "role" in m && "content" in m &&
+      validRoles.has((m as ChatMessage).role) &&
+      typeof (m as ChatMessage).content === "string" &&
+      (m as ChatMessage).content.length <= 2000
+  );
+  if (!validHistory) {
+    return NextResponse.json({ error: "Invalid conversation history" }, { status: 400 });
+  }
 
   if (process.env.ENABLE_AI_CHAT === "false") {
     const mock =

@@ -81,9 +81,24 @@ export function ChatWindow({ onClose, chat }: ChatWindowProps) {
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
         {messages.length === 0 && (
-          <p className="text-sm text-muted-foreground text-center py-8">
-            Ask me about my experience, projects, or technical approach.
-          </p>
+          <div className="flex flex-col gap-2 py-6">
+            <p className="text-xs text-muted-foreground text-center mb-2">
+              Try asking:
+            </p>
+            {[
+              "What's your experience with e-commerce integrations?",
+              "How do you approach leading engineering teams?",
+              "Tell me about a challenging architecture decision.",
+            ].map((q) => (
+              <button
+                key={q}
+                onClick={() => sendMessage(q)}
+                className="rounded-md border border-border px-3 py-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
         )}
         {messages.map((msg, i) => (
           <ChatMessage
