@@ -13,15 +13,27 @@ export function HeroSection() {
     ? { duration: 0 }
     : { duration: 0.3, ease: "easeOut" as const };
 
+  const entrance = (delay: number) =>
+    shouldReduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 12 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.4, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
+        };
+
   return (
     <section className="py-24 sm:py-32">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
-          <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <motion.h1
+            className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+            {...entrance(0)}
+          >
             Junmar Jose
-          </h1>
+          </motion.h1>
 
-          <div className="min-h-[3.5rem] sm:min-h-[4rem]">
+          <motion.div className="min-h-[3.5rem] sm:min-h-[4rem]" {...entrance(0.1)}>
             <AnimatePresence mode="wait">
               <motion.p
                 key={selectedRole ?? "default"}
@@ -36,10 +48,10 @@ export function HeroSection() {
                   : "I design systems, lead teams, and build full-stack products from idea to production."}
               </motion.p>
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <motion.div className="flex flex-col gap-3" {...entrance(0.2)}>
           <p className="text-sm text-muted-foreground">
             {selectedRole ? "Viewing as:" : "What role are you hiring for?"}
           </p>
@@ -77,7 +89,7 @@ export function HeroSection() {
               </motion.button>
             )}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
