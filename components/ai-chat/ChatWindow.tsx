@@ -30,7 +30,7 @@ export function ChatWindow({ onClose, chat }: ChatWindowProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.2 }}
-      className="fixed bottom-20 right-4 z-40 flex flex-col w-[calc(100vw-2rem)] max-w-sm h-[min(500px,calc(100vh-8rem))] rounded-lg border border-border bg-background shadow-lg sm:right-6 sm:bottom-24"
+      className="fixed bottom-20 right-4 z-40 flex flex-col w-[calc(100vw-2rem)] max-w-sm h-[min(500px,calc(100vh-8rem))] rounded-lg border border-border bg-background sm:right-6 sm:bottom-24"
     >
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-3">

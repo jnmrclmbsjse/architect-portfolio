@@ -51,7 +51,7 @@ export function ChatBubble() {
             animate={{ opacity: 1, y: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-20 right-4 z-40 max-w-[260px] cursor-pointer rounded-lg border border-border bg-background px-4 py-3 text-left shadow-lg sm:right-6 sm:bottom-24"
+            className="fixed bottom-20 right-4 z-40 max-w-[260px] cursor-pointer rounded-lg border border-border bg-background px-4 py-3 text-left sm:right-6 sm:bottom-24"
           >
             <p className="text-sm text-foreground">
               Got questions about my work or experience? Ask away, I&apos;m happy to chat.
@@ -75,7 +75,7 @@ export function ChatBubble() {
             setIsOpen((prev) => !prev);
           }}
           size="lg"
-          className="h-12 w-12 rounded-full p-0 shadow-md"
+          className="h-12 w-12 rounded-full p-0"
           aria-label={isOpen ? "Close chat" : "Open chat"}
         >
           <svg
