@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Badge } from "@/components/ui/badge";
 import experienceData from "@/content/experience.json";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Software architect and technical lead with 9+ years building systems across SaaS, e-commerce, AI, and mobile in the Netherlands, UK, Australia, and the Philippines.",
+};
 
 interface Experience {
   company: string;

@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { getAllCaseStudies } from "@/lib/content/case-studies";
 import { CaseStudiesList } from "./case-studies-client";
+
+export const metadata: Metadata = {
+  title: "Case Studies",
+  description:
+    "Real-world projects across SaaS, e-commerce, and AI. Each case study covers the problem, architecture decisions, and measurable outcomes.",
+};
 
 export default function CaseStudiesPage() {
   const caseStudies = getAllCaseStudies();

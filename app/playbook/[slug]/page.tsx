@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -13,6 +14,16 @@ interface PlaybookEntryPageProps {
 
 export function generateStaticParams() {
   return getAllDecisions().map((d) => ({ slug: d.slug }));
+}
+
+export async function generateMetadata({ params }: PlaybookEntryPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const result = getDecision(slug);
+  if (!result) return {};
+  return {
+    title: result.meta.title,
+    description: `Architecture decision: ${result.meta.title}. Category: ${result.meta.category}.`,
+  };
 }
 
 export default async function PlaybookEntryPage({

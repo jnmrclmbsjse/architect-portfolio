@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { PageContainer } from "@/components/layout/PageContainer";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Junmar Jose. Open to architecture consulting, technical leadership roles, and engineering challenges.",
+};
 
 const contactLinks = [
   {

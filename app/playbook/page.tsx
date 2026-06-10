@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Badge } from "@/components/ui/badge";
 import { getAllDecisions } from "@/lib/content/playbook";
 import { PlaybookList } from "./playbook-client";
+
+export const metadata: Metadata = {
+  title: "The Playbook",
+  description:
+    "Architecture decisions explained as questions. Why webhook over polling? Why Scrumban over pure Scrum? Real reasoning from real projects.",
+};
 
 export default function PlaybookPage() {
   const decisions = getAllDecisions();

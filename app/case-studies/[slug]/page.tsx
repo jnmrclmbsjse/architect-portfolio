@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -13,6 +14,16 @@ interface CaseStudyPageProps {
 
 export function generateStaticParams() {
   return getAllCaseStudies().map((cs) => ({ slug: cs.slug }));
+}
+
+export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const result = getCaseStudy(slug);
+  if (!result) return {};
+  return {
+    title: result.meta.title,
+    description: result.meta.subtitle,
+  };
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
