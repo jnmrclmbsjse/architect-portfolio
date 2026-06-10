@@ -42,7 +42,7 @@ export function TechStackSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4, delay: catIdx * 0.08 }}
           >
-            <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            <h3 className="text-xs font-medium text-muted-foreground">
               {categoryLabels[key] || key}
             </h3>
             <div className="flex flex-wrap gap-2">

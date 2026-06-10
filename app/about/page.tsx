@@ -32,6 +32,21 @@ export default function AboutPage() {
           </p>
         </div>
 
+        <div className="max-w-prose space-y-4 text-sm text-muted-foreground leading-relaxed mb-16">
+          <p>
+            My work sits at the intersection of architecture decisions and
+            delivery. I design the system, lead the team, and still write the
+            code. Over 9 years I've gone from writing PHP to leading squads of
+            up to 11 engineers, introducing development methodologies where none
+            existed, and turning stale backlogs into shipped products.
+          </p>
+          <p>
+            I care about honest engineering: choosing the right tool instead of
+            the trendy one, documenting decisions so the next person understands
+            why, and building systems that survive contact with production.
+          </p>
+        </div>
+
         <div className="mb-16">
           <h2 className="font-heading text-xl font-semibold mb-8">
             Career Timeline

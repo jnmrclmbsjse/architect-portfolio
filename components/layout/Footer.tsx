@@ -33,7 +33,7 @@ export function Footer() {
               LinkedIn
             </a>
             <a
-              href="https://github.com/junmarjose"
+              href="https://github.com/jnmrclmbsjse"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground transition-colors hover:text-foreground"

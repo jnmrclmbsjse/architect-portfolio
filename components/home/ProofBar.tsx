@@ -5,10 +5,10 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const stats = [
-  { value: "9+", label: "Years in IT" },
-  { value: "8+", label: "Platforms Integrated" },
-  { value: "11", label: "Largest Team Led" },
-  { value: "30+", label: "Webshops Connected" },
+  { value: "9+", label: "years in IT" },
+  { value: "8+", label: "platforms integrated" },
+  { value: "11", label: "largest team led" },
+  { value: "30+", label: "webshops connected" },
 ];
 
 const domains = ["SaaS", "E-commerce", "AI", "CRM"];
@@ -20,23 +20,23 @@ export function ProofBar() {
 
   return (
     <section ref={ref} className="py-12 border-y border-border">
-      <div className="flex flex-col gap-8">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <motion.div
+        className="flex flex-col gap-6"
+        initial={shouldReduceMotion ? false : { opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5 }}
+      >
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
           {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              className="flex flex-col gap-1"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4, delay: i * 0.1 }}
-            >
-              <span className="font-heading text-3xl font-bold text-foreground">
-                {stat.value}
+            <span key={stat.label} className="flex items-center gap-x-4">
+              <span>
+                <span className="font-semibold text-foreground">{stat.value}</span>
+                {" "}{stat.label}
               </span>
-              <span className="text-xs text-muted-foreground">
-                {stat.label}
-              </span>
-            </motion.div>
+              {i < stats.length - 1 && (
+                <span className="hidden sm:inline text-border" aria-hidden="true">&middot;</span>
+              )}
+            </span>
           ))}
         </div>
         <div className="flex flex-wrap gap-2">
@@ -46,7 +46,7 @@ export function ProofBar() {
             </Badge>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
