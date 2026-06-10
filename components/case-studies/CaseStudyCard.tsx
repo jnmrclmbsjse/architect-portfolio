@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { StackTag } from "@/components/shared/StackTag";
 import { type CaseStudyMeta } from "@/lib/content/case-studies";
@@ -6,11 +7,13 @@ import { type CaseStudyMeta } from "@/lib/content/case-studies";
 interface CaseStudyCardProps {
   caseStudy: CaseStudyMeta;
   variant?: "default" | "featured" | "compact";
+  className?: string;
 }
 
 export function CaseStudyCard({
   caseStudy,
   variant = "default",
+  className,
 }: CaseStudyCardProps) {
   if (variant === "featured") {
     return (
@@ -72,7 +75,7 @@ export function CaseStudyCard({
   return (
     <Link
       href={`/case-studies/${caseStudy.slug}`}
-      className="group flex flex-col gap-4 rounded-lg border border-border p-6 transition-colors hover:border-primary/50"
+      className={cn("group flex flex-col gap-4 rounded-lg border border-border p-6 transition-colors hover:border-primary/50", className)}
     >
       <div className="flex items-center gap-2">
         <Badge variant="outline" className="font-mono text-[10px]">

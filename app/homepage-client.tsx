@@ -1,6 +1,5 @@
 "use client";
 
-import { Suspense } from "react";
 import { useRoleFilter } from "@/hooks/useRoleFilter";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ProofBar } from "@/components/home/ProofBar";
@@ -16,7 +15,7 @@ interface HomepageClientProps {
   decisions: PlaybookDecisionMeta[];
 }
 
-function HomepageContent({ caseStudies, decisions }: HomepageClientProps) {
+export function HomepageClient({ caseStudies, decisions }: HomepageClientProps) {
   const { selectedRole } = useRoleFilter();
 
   return (
@@ -31,13 +30,5 @@ function HomepageContent({ caseStudies, decisions }: HomepageClientProps) {
       <PlaybookPreview decisions={decisions} selectedRole={selectedRole} />
       <TechStackSection />
     </>
-  );
-}
-
-export function HomepageClient({ caseStudies, decisions }: HomepageClientProps) {
-  return (
-    <Suspense fallback={<div className="min-h-screen" />}>
-      <HomepageContent caseStudies={caseStudies} decisions={decisions} />
-    </Suspense>
   );
 }

@@ -9,6 +9,7 @@ export interface PlaybookDecisionMeta {
   slug: string;
   category: string;
   roles: string[];
+  relatedCaseStudies: string[];
   date: string;
 }
 
@@ -22,4 +23,18 @@ export function getAllDecisions(): PlaybookDecisionMeta[] {
       return data as PlaybookDecisionMeta;
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getDecision(slug: string): { meta: PlaybookDecisionMeta; content: string } | null {
+  const files = fs.readdirSync(PLAYBOOK_DIR).filter((f) => f.endsWith(".mdx"));
+
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(PLAYBOOK_DIR, file), "utf-8");
+    const { data, content } = matter(raw);
+    if ((data as PlaybookDecisionMeta).slug === slug) {
+      return { meta: data as PlaybookDecisionMeta, content };
+    }
+  }
+
+  return null;
 }

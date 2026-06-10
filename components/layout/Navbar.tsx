@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Menu } from "lucide-react";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { PageContainer } from "./PageContainer";
@@ -50,9 +50,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Suspense fallback={null}>
-              <RoleFilter />
-            </Suspense>
+            <RoleFilter />
             <ThemeToggle />
             <Button
               variant="ghost"

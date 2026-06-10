@@ -23,11 +23,11 @@ export function FeaturedCaseStudies({
 
   return (
     <section className="py-16">
-      <div className="flex items-baseline justify-between mb-8">
+      <div className="flex flex-col gap-2 mb-8 sm:flex-row sm:items-baseline sm:justify-between">
         <h2 className="font-heading text-2xl font-semibold">Selected Work</h2>
         <Link
           href="/case-studies"
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="shrink-0 text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
         >
           View all &rarr;
         </Link>

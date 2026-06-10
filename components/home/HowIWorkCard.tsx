@@ -36,7 +36,7 @@ export function HowIWorkCard({
         <h3 className="font-heading text-lg font-semibold">{title}</h3>
         <p className="text-sm text-muted-foreground">{subtitle}</p>
       </div>
-      <p className="col-start-2 mt-2 text-sm text-muted-foreground leading-relaxed max-w-prose">
+      <p className="col-start-2 mt-2 text-sm text-muted-foreground leading-relaxed">
         {description}
       </p>
       <div className="col-start-2 mt-3 flex flex-wrap gap-1.5">

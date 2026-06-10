@@ -28,3 +28,17 @@ export function getAllCaseStudies(): CaseStudyMeta[] {
 export function getFeaturedCaseStudies(): CaseStudyMeta[] {
   return getAllCaseStudies().filter((cs) => cs.featured);
 }
+
+export function getCaseStudy(slug: string): { meta: CaseStudyMeta; content: string } | null {
+  const files = fs.readdirSync(CASE_STUDIES_DIR).filter((f) => f.endsWith(".mdx"));
+
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(CASE_STUDIES_DIR, file), "utf-8");
+    const { data, content } = matter(raw);
+    if ((data as CaseStudyMeta).slug === slug) {
+      return { meta: data as CaseStudyMeta, content };
+    }
+  }
+
+  return null;
+}
