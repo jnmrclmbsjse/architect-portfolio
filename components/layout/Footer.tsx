@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-2">
             <h3 className="font-heading text-lg font-semibold">
-              Let&apos;s build something together
+              Looking for an architect who still writes code?
             </h3>
             <p className="text-sm text-muted-foreground">
               Open to Technical Lead, Solutions Architect, and senior engineering

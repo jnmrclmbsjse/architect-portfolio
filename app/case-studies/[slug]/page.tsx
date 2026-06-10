@@ -49,7 +49,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             href="/case-studies"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            &larr; All case studies
+            <span aria-hidden="true">&larr;</span> All case studies
           </Link>
           <h1 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             {meta.title}

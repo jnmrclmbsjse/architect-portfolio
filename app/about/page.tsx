@@ -54,7 +54,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="mb-16">
+        <div className="mb-16 max-w-4xl">
           <h2 className="font-heading text-xl font-semibold mb-8">
             Career Timeline
           </h2>
@@ -129,7 +129,7 @@ export default function AboutPage() {
               href="/contact"
               className="text-sm font-medium text-primary hover:underline"
             >
-              Contact me &rarr;
+              Contact me <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         </div>

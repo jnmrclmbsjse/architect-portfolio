@@ -29,7 +29,7 @@ export function FeaturedCaseStudies({
           href="/case-studies"
           className="shrink-0 text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
         >
-          View all &rarr;
+          View all <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>
       <div className="flex flex-col gap-4">

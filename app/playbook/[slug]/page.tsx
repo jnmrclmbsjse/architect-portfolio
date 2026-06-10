@@ -56,7 +56,7 @@ export default async function PlaybookEntryPage({
             href="/playbook"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            &larr; All decisions
+            <span aria-hidden="true">&larr;</span> All decisions
           </Link>
           <h1 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             {meta.title}

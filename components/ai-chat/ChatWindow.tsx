@@ -24,6 +24,14 @@ export function ChatWindow({ onClose, chat }: ChatWindowProps) {
     }
   }, [messages]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <motion.div
       initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}

@@ -29,8 +29,29 @@ export function ChatBubble() {
     if (!showPeek) return;
 
     const dismiss = setTimeout(() => setShowPeek(false), 10000);
-    return () => clearTimeout(dismiss);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowPeek(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      clearTimeout(dismiss);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [showPeek]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "?" && !isOpen) {
+        const tag = (e.target as HTMLElement).tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA" || (e.target as HTMLElement).isContentEditable) return;
+        e.preventDefault();
+        setShowPeek(false);
+        setIsOpen(true);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   const handleOpen = useCallback(() => {
     setShowPeek(false);

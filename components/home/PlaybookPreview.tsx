@@ -30,7 +30,7 @@ export function PlaybookPreview({
           href="/playbook"
           className="shrink-0 text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
         >
-          View all &rarr;
+          View all <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>
       <div className="border-t border-border">

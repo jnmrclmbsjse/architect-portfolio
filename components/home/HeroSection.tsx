@@ -56,14 +56,19 @@ export function HeroSection() {
             {selectedRole ? "Viewing as:" : "What role are you hiring for?"}
           </p>
 
-          <div className="flex flex-wrap gap-2">
+          <div
+            className="flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-x-visible sm:pb-0"
+            role="group"
+            aria-label="Filter by role"
+          >
             {roles.map((r) => {
               const isActive = selectedRole === r.slug;
               return (
                 <button
                   key={r.slug}
                   onClick={() => setRole(isActive ? null : r.slug)}
-                  className={`min-h-[44px] rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  aria-pressed={isActive}
+                  className={`shrink-0 min-h-[44px] rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-primary text-primary-foreground"
                       : "border border-border text-foreground hover:bg-muted"
@@ -75,9 +80,10 @@ export function HeroSection() {
             })}
           </div>
 
-          <AnimatePresence>
-            {selectedRole && (
+          <AnimatePresence mode="wait">
+            {selectedRole ? (
               <motion.button
+                key="clear"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -87,6 +93,17 @@ export function HeroSection() {
               >
                 Clear filter
               </motion.button>
+            ) : (
+              <motion.p
+                key="hint"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={transition}
+                className="text-xs text-muted-foreground"
+              >
+                Selecting a role reorders the page to highlight relevant experience.
+              </motion.p>
             )}
           </AnimatePresence>
         </motion.div>
