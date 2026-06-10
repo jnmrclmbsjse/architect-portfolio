@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { type RoleSlug, getContentOrder } from "@/lib/roles";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
 import { type CaseStudyMeta } from "@/lib/content/case-studies";
@@ -17,6 +17,7 @@ export function FeaturedCaseStudies({
 }: FeaturedCaseStudiesProps) {
   const ordered = getContentOrder(selectedRole, caseStudies);
   const [featured, ...rest] = ordered;
+  const shouldReduceMotion = useReducedMotion();
 
   if (!featured) return null;
 
@@ -35,9 +36,9 @@ export function FeaturedCaseStudies({
         <motion.div
           key={featured.slug}
           layout
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4 }}
         >
           <CaseStudyCard caseStudy={featured} variant="featured" />
         </motion.div>
@@ -47,9 +48,9 @@ export function FeaturedCaseStudies({
               <motion.div
                 key={cs.slug}
                 layout
-                initial={{ opacity: 0, y: 20 }}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: (i + 1) * 0.1 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4, delay: (i + 1) * 0.1 }}
               >
                 <CaseStudyCard caseStudy={cs} variant="compact" />
               </motion.div>

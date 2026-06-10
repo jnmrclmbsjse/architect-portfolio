@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { type RoleSlug } from "@/lib/roles";
 import { type PlaybookDecisionMeta } from "@/lib/content/playbook";
 
@@ -18,6 +18,7 @@ export function PlaybookPreview({
     ? decisions.filter((d) => d.roles.includes(selectedRole))
     : decisions;
   const shown = filtered.slice(0, 5);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="py-16">
@@ -36,9 +37,9 @@ export function PlaybookPreview({
         {shown.map((decision, i) => (
           <motion.div
             key={decision.slug}
-            initial={{ opacity: 0 }}
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: i * 0.05 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3, delay: i * 0.05 }}
           >
             <Link
               href={`/playbook/${decision.slug}`}

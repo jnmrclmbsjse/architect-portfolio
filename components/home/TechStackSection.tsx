@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -24,6 +24,7 @@ const confidenceStyles: Record<string, string> = {
 export function TechStackSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const shouldReduceMotion = useReducedMotion();
 
   const categories = Object.entries(techStackData).filter(
     ([key]) => key !== "mobile"
@@ -37,9 +38,9 @@ export function TechStackSection() {
           <motion.div
             key={key}
             className="flex flex-col gap-3"
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: catIdx * 0.08 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4, delay: catIdx * 0.08 }}
           >
             <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
               {categoryLabels[key] || key}

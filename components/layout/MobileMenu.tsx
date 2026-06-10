@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Sheet,
   SheetContent,
@@ -18,6 +19,7 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onOpenChange, links }: MobileMenuProps) {
+  const pathname = usePathname();
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="right" className="w-72">
@@ -26,16 +28,21 @@ export function MobileMenu({ open, onOpenChange, links }: MobileMenuProps) {
         </SheetHeader>
         <div className="flex flex-1 flex-col px-4">
           <nav className="flex flex-col gap-4">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => onOpenChange(false)}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const isActive = pathname.startsWith(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => onOpenChange(false)}
+                  className={`text-sm transition-colors hover:text-foreground ${
+                    isActive ? "text-foreground" : "text-muted-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
           <Separator className="my-6" />
           <div className="flex items-center justify-between">

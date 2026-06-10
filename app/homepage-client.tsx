@@ -36,7 +36,7 @@ function HomepageContent({ caseStudies, decisions }: HomepageClientProps) {
 
 export function HomepageClient({ caseStudies, decisions }: HomepageClientProps) {
   return (
-    <Suspense>
+    <Suspense fallback={<div className="min-h-screen" />}>
       <HomepageContent caseStudies={caseStudies} decisions={decisions} />
     </Suspense>
   );
