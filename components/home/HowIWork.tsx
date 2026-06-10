@@ -24,7 +24,7 @@ export function HowIWork({ selectedRole }: HowIWorkProps) {
   return (
     <section className="py-16">
       <h2 className="font-heading text-2xl font-semibold mb-8">How I Work</h2>
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="flex flex-col">
         {cards.map((card, i) => (
           <HowIWorkCard
             key={card.key}

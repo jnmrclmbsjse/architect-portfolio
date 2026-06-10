@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 import { type RoleSlug } from "@/lib/roles";
 import { type PlaybookDecisionMeta } from "@/lib/content/playbook";
 
@@ -18,7 +17,7 @@ export function PlaybookPreview({
   const filtered = selectedRole
     ? decisions.filter((d) => d.roles.includes(selectedRole))
     : decisions;
-  const shown = filtered.slice(0, 3);
+  const shown = filtered.slice(0, 5);
 
   return (
     <section className="py-16">
@@ -33,24 +32,25 @@ export function PlaybookPreview({
           View all &rarr;
         </Link>
       </div>
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="border-t border-border">
         {shown.map((decision, i) => (
           <motion.div
             key={decision.slug}
-            className="flex flex-col gap-3 rounded-lg border border-border p-5 transition-colors hover:border-primary/50"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: i * 0.05 }}
           >
-            <Badge
-              variant="outline"
-              className="w-fit font-mono text-[10px] capitalize"
+            <Link
+              href={`/playbook/${decision.slug}`}
+              className="group flex items-baseline justify-between gap-4 border-b border-border py-4 transition-colors"
             >
-              {decision.category.replace("-", " ")}
-            </Badge>
-            <h3 className="font-heading text-sm font-medium leading-snug">
-              {decision.title}
-            </h3>
+              <h3 className="font-heading text-sm font-medium leading-snug group-hover:text-primary transition-colors">
+                {decision.title}
+              </h3>
+              <span className="shrink-0 text-xs text-muted-foreground capitalize">
+                {decision.category.replace("-", " ")}
+              </span>
+            </Link>
           </motion.div>
         ))}
       </div>

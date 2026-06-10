@@ -16,6 +16,9 @@ export function FeaturedCaseStudies({
   selectedRole,
 }: FeaturedCaseStudiesProps) {
   const ordered = getContentOrder(selectedRole, caseStudies);
+  const [featured, ...rest] = ordered;
+
+  if (!featured) return null;
 
   return (
     <section className="py-16">
@@ -28,18 +31,31 @@ export function FeaturedCaseStudies({
           View all &rarr;
         </Link>
       </div>
-      <div className="grid gap-6 md:grid-cols-2">
-        {ordered.map((cs, i) => (
-          <motion.div
-            key={cs.slug}
-            layout
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
-          >
-            <CaseStudyCard caseStudy={cs} />
-          </motion.div>
-        ))}
+      <div className="flex flex-col gap-4">
+        <motion.div
+          key={featured.slug}
+          layout
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <CaseStudyCard caseStudy={featured} variant="featured" />
+        </motion.div>
+        {rest.length > 0 && (
+          <div className="grid gap-4 sm:grid-cols-3">
+            {rest.map((cs, i) => (
+              <motion.div
+                key={cs.slug}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: (i + 1) * 0.1 }}
+              >
+                <CaseStudyCard caseStudy={cs} variant="compact" />
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
