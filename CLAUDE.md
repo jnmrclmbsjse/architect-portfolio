@@ -78,7 +78,7 @@ docs/                   → IMPLEMENTATION.md and project documentation
 
 ## AI Chat Rules
 
-- Model: claude-sonnet-4-20250514
+- Model: claude-sonnet-4-6
 - System prompt is built from `content/ai-knowledge.json` in `lib/ai/system-prompt.ts`
 - Rate limit: 20 messages per visitor session
 - The AI speaks in first person ("I have experience with..."), representing Junmar directly
