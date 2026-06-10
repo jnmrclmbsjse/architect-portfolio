@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChatWindow } from "./ChatWindow";
@@ -13,6 +13,7 @@ export function ChatBubble() {
   const [showPeek, setShowPeek] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const chat = useChat();
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (sessionStorage.getItem(PEEK_KEY)) return;
@@ -58,10 +59,15 @@ export function ChatBubble() {
     setIsOpen(true);
   }, []);
 
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  }, []);
+
   return (
     <>
       <AnimatePresence>
-        {isOpen && <ChatWindow onClose={() => setIsOpen(false)} chat={chat} />}
+        {isOpen && <ChatWindow onClose={handleClose} chat={chat} />}
       </AnimatePresence>
 
       <AnimatePresence>
@@ -85,15 +91,25 @@ export function ChatBubble() {
       </AnimatePresence>
 
       <motion.div
-        className="fixed bottom-4 right-4 z-40 sm:bottom-6 sm:right-6"
+        className="fixed bottom-4 right-4 z-40 flex flex-col items-center gap-1.5 sm:bottom-6 sm:right-6"
         initial={shouldReduceMotion ? false : { scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3, delay: 1 }}
       >
+        {!isOpen && (
+          <kbd className="hidden sm:block rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
+            ?
+          </kbd>
+        )}
         <Button
+          ref={triggerRef}
           onClick={() => {
             setShowPeek(false);
-            setIsOpen((prev) => !prev);
+            if (isOpen) {
+              handleClose();
+            } else {
+              setIsOpen(true);
+            }
           }}
           size="lg"
           className="h-12 w-12 rounded-full p-0"
