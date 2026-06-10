@@ -1,0 +1,73 @@
+---
+title: "From Platform Integrator to Platform Builder"
+subtitle: "How a SaaS integration engine across 8 e-commerce platforms evolved into building our own webshop product"
+slug: "multi-platform-integration-engine"
+roles: ["software-architect", "solutions-architect", "technical-lead"]
+stack: ["PHP/Symfony", "PostgreSQL", "Redis", "API Integrations", "Shopify", "Magento", "WooCommerce", "Shopware 6", "Prestashop", "Lightspeed", "Bol.com", "CCV"]
+domain: "ecommerce"
+featured: true
+order:
+  software-architect: 2
+  solutions-architect: 2
+  technical-lead: 4
+  scrum-master: 5
+  senior-fullstack: 3
+---
+
+## The Problem
+
+A SaaS platform needed to connect centralized product, stock, order, and customer data to 30+ webshops running on 8 different e-commerce platforms — Shopify, Magento 2, WooCommerce, Shopware 6, Prestashop, Lightspeed, Bol.com, and CCV. Each platform had its own API, data model, rate limits, validation rules, and edge cases.
+
+The core challenge wasn't building one integration. It was building a system that could reliably sync data across all platforms simultaneously without conflicts, data loss, or one platform's quirks breaking another's sync.
+
+## Constraints
+
+- 8+ platforms with fundamentally different APIs, data models, and behaviors
+- 30+ webshops running concurrently — bulk operations hit API rate limits
+- Clients managed multiple webshops across different platforms — a single product change needed to propagate everywhere
+- Each platform had unique rate limiting, validation rules, and webhook reliability
+
+## My Role
+
+**Lead Developer + Architect** at StoreKeeper B.V. (via CC.Talent, later direct). I led backend development, designed integration patterns, expanded platform coverage, mentored junior developers, and collaborated with CEO/CTO-level stakeholders on technical direction.
+
+## The Architecture
+
+### Single Source of Truth
+
+The most critical architectural decision: the SaaS platform is the single source of truth for all product data, stock levels, and pricing. Sync flows **one direction** for data that the merchant manages (SaaS → platforms). Only data that originates on the platform side — like new orders or customer-initiated changes — syncs back (platform → SaaS).
+
+This eliminated the most dangerous failure mode in multi-platform sync: data conflicts. Without a clear source of truth, a price change on Shopify could conflict with a price change on Magento, with no way to determine which is "correct." By making the SaaS authoritative, the system always knows which data wins.
+
+### Platform-Specific Adapters
+
+Each platform integration is handled through a normalized adapter layer. The core system works with a unified data model; adapters translate between the SaaS model and each platform's API. This means adding a new platform doesn't require changing core sync logic — only building a new adapter.
+
+### Configurable Rate Limiting
+
+Rate limiting varies wildly across platforms — Shopify throttles differently than Bol.com. Rather than hardcoding delays, I built configurable "delay until" settings per platform, allowing the system to respect each platform's limits without a one-size-fits-all approach.
+
+## Key Decisions
+
+- **SaaS as single source of truth:** Eliminated data conflicts entirely for merchant-managed data. The tradeoff is that merchants must make changes in the SaaS, not directly on individual platforms — but this is a feature, not a limitation, because it ensures consistency.
+- **Configurable rate limiting per platform:** Instead of a global delay, each platform adapter has its own "delay until" setting. This was necessary because rate limit behavior varies wildly — some platforms throttle gracefully, others fail silently.
+
+## The Evolution: From Integrator to Builder
+
+As the platform matured and we understood the e-commerce landscape deeply from integrating 8+ platforms, a strategic question emerged: **why keep integrating with other platforms when we could build our own?**
+
+The CEO proposed the idea of building an in-house webshop and webshop builder — offering new and existing customers the option to migrate onto a platform we fully controlled. The CEO, CTO, and I brainstormed the concept together. The CTO led the initial architecture and POC. Once the product moved into active development, I led the webshop squad — owning execution, team coordination, and hands-on development as we turned the concept into an actual selling product.
+
+This pivot was significant: StoreKeeper went from being a middleware company (connecting other platforms) to being a platform company (offering its own webshop alongside third-party integrations). It gave customers a choice: keep using Shopify/Magento/WooCommerce with StoreKeeper as the integration layer, or migrate to StoreKeeper's own webshop for a fully unified experience.
+
+## The Outcome
+
+- 30+ webshops connected across 8 e-commerce platforms with consistent data sync
+- Data consistency maintained — product, stock, and pricing changes propagate reliably from SaaS to all connected platforms
+- Platform coverage expanded over time by adding new adapters (Shopify, Magento, Prestashop, CCV, and others)
+- Webshop builder successfully developed and launched as an additional product — sold to customers alongside the integration platform
+- System continues to run in production supporting real merchant operations
+
+## What I'd Do Differently
+
+I'd invest more upfront in platform-specific error handling. Each platform fails differently — Shopify rate limits gracefully, while other platforms fail silently or return misleading success responses. Building platform-specific error detection and recovery earlier would have prevented some debugging headaches. The lesson: even with a lot of unit tests, there will always be scenarios you haven't covered. Plan for the unknown failures, not just the known ones.

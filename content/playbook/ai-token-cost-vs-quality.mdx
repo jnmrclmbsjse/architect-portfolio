@@ -1,0 +1,32 @@
+---
+title: "How do you balance AI token costs against response quality in a SaaS product?"
+slug: "ai-token-cost-vs-quality"
+category: "system-design"
+roles: ["software-architect", "solutions-architect"]
+relatedCaseStudies: ["ai-driven-saas-platform"]
+date: "2024-10-01"
+---
+
+## Context
+
+While architecting an AI-driven SaaS platform that automates digital marketing workflows, I faced a core tension: the AI integration was the product's value proposition, but unoptimized token usage would make the unit economics unviable. Spending freely on tokens gave great results but killed profitability. Aggressively limiting tokens saved money but degraded the output quality that customers were paying for.
+
+## Decision
+
+Instead of choosing one extreme, I restructured the AI workflow to reduce token consumption by approximately 50% while maintaining output accuracy. This involved optimizing prompt structure, eliminating redundant context in multi-step workflows, and designing the application flow to minimize unnecessary AI calls.
+
+The key insight: much of the token cost came from repetitive context being passed in every request. By restructuring how the application interacted with the AI — caching intermediate results, batching related operations, and trimming prompts to essential context — I achieved the same output quality with roughly half the token usage.
+
+## Consequences
+
+**Positive:**
+- Made the SaaS product economically viable — token costs became sustainable at scale
+- No measurable degradation in output quality from the user's perspective
+- Established a pattern for the team: every new AI feature now considers token cost during design, not as an afterthought
+
+**Negative:**
+- Added architectural complexity — the prompt optimization layer is another thing to maintain
+- Some optimizations were model-specific and may need revisiting if the AI provider or model changes
+
+**Neutral:**
+- This is an ongoing concern, not a one-time fix. As the product adds features, each new AI interaction needs the same cost-quality analysis.

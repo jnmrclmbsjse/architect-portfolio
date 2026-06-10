@@ -1,0 +1,199 @@
+{
+  "personal": {
+    "name": "Junmar Jose",
+    "location": "Abucay, Central Luzon, Philippines",
+    "availability": "Open to Technical Lead, Engineering Manager, Solutions Architect, and senior software leadership roles. Interested in remote roles, relocation opportunities, or companies offering sponsorship.",
+    "languages": ["English", "Filipino"],
+    "education": "Bachelor's Degree in Information Technology, Bataan Peninsula State University (2013–2017), Cum Laude",
+    "honors": [
+      "Cum Laude",
+      "Gawad Talinong Balangueño",
+      "Civil Service Commission Exam Honor Graduate (PD 907)",
+      "First Place - TORO.IO IT Elite Challenge",
+      "First Place - Bataan Hackathon"
+    ]
+  },
+  "experience_summary": {
+    "total_years": "9+",
+    "platforms_integrated": "8+ (Shopify, Magento 2, WooCommerce, Shopware 6, Prestashop, Lightspeed, Bol.com, CCV)",
+    "webshops_connected": "30+ (via 8-platform integration at StoreKeeper) + 100+ (legacy modernization at PartsUnited — separate project)",
+    "largest_team_led": 11,
+    "countries_worked_with": "5 (Netherlands, UK, Australia, Sweden, Philippines)",
+    "domains": ["SaaS", "E-commerce", "AI-driven platforms", "CRM systems", "Lead generation", "Marine systems", "Government systems"],
+    "roles_held": ["Technical Lead", "Scrum Master", "Solutions Architect", "Lead Developer", "Senior Full Stack Developer", "Co-founder"]
+  },
+  "experience": [
+    {
+      "company": "StoreKeeper B.V.",
+      "role": "Technical Lead / Scrum Master / Senior Full Stack Developer",
+      "period": "April 2025 – May 2026",
+      "highlights": [
+        "Designed a custom Scrumban framework after iterating through pure Scrum and pure Kanban — delivered 100+ backlog tickets in 6 months",
+        "Led a development squad in a multi-squad structure of 11 developers",
+        "Took on CTO-level operational workload: PR reviews, deployment coordination, technical decisions",
+        "Delivered a year's worth of stale backlog that had been accumulating"
+      ],
+      "stack": ["PHP/Symfony", "React", "Backbone/Marionette", "PostgreSQL", "Redis", "Kubernetes", "Azure", "Scalingo"]
+    },
+    {
+      "company": "Self-employed (Netherlands client)",
+      "role": "Solutions Architect / Lead Engineer",
+      "period": "July 2024 – March 2025",
+      "highlights": [
+        "Architected an AI-driven SaaS platform that automated a multi-day manual digital marketing workflow to hours",
+        "Reduced AI token consumption by ~50% while maintaining response quality",
+        "Took the product from startup concept to functional SaaS"
+      ],
+      "stack": ["Symfony", "React", "Next.js", "Tailwind CSS", "Vercel", "Scalingo"]
+    },
+    {
+      "company": "CC.Talent (CodingChiefs)",
+      "role": "Lead Developer",
+      "period": "June 2021 – June 2024",
+      "highlights": [
+        "Led development for StoreKeeper B.V. and PartsUnited B.V. (two separate projects)",
+        "StoreKeeper: Integrated 8+ e-commerce platforms connecting 30+ webshops via SaaS-as-source-of-truth architecture",
+        "PartsUnited: Modernized legacy systems using Symfony components, connecting centralized databases to 100+ webshops",
+        "Mentored junior developers"
+      ],
+      "stack": ["PHP/Symfony", "PostgreSQL", "MariaDB", "API Integrations"]
+    },
+    {
+      "company": "Oxford Business Group",
+      "role": "Full Stack PHP Developer → Senior Full Stack Developer",
+      "period": "February 2018 – May 2023 (multiple engagements)",
+      "highlights": [
+        "Designed the architecture for an offline-capable CRM with snapshot-based synchronization",
+        "Migrated web and e-commerce platform from Drupal to WordPress/WooCommerce",
+        "Managed Linux servers, improved CRM and e-commerce reliability"
+      ],
+      "stack": ["PHP", "Symfony", "WordPress", "WooCommerce", "MySQL", "REST APIs", "Linux"]
+    },
+    {
+      "company": "Bayview Technologies",
+      "role": "Software Engineer, Lead",
+      "period": "August 2019 – June 2021",
+      "highlights": [
+        "Served as Scrum Master for Agile execution",
+        "Introduced Docker-based development environments",
+        "Key developer and SME for React and Node.js adoption",
+        "Designed CI/CD pipelines with GitLab CI and Jenkins"
+      ],
+      "stack": ["PHP", "Drupal", "React", "Node.js", "Docker", "GitLab CI", "Jenkins"]
+    },
+    {
+      "company": "TechRostrum Digital IT Solutions",
+      "role": "Co-founder / Lead Full Stack Engineer",
+      "period": "February 2020 – March 2021",
+      "highlights": [
+        "Co-founded a software development solutions provider",
+        "Architected full-system solutions for client projects",
+        "Balanced engineering, team leadership, and business ownership"
+      ],
+      "stack": ["PHP", "Laravel", "MySQL"]
+    },
+    {
+      "company": "Kockum Sonics AB",
+      "role": "Marine Systems Developer",
+      "period": "August 2017 – February 2018",
+      "highlights": [
+        "Built cargo and ballast automation system from technical documentation",
+        "Collaborated with a Sweden-based engineering team",
+        "Designed CRM prototype and sales automation"
+      ],
+      "stack": ["Software Development", "Automation Systems"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Development Methodology Transformation",
+      "problem": "SaaS team had no formal development process — shipped endlessly without releasing, lost momentum, vague tickets, disorganized meetings",
+      "solution": "Iterated through Scrum → Kanban → custom Scrumban framework tailored to the team's real constraints",
+      "outcome": "Delivered 100+ tickets in 6 months including a year's worth of stale backlog. Existing customers saw long-standing issues resolved.",
+      "stack": ["Scrum", "Kanban", "Scrumban"],
+      "role_played": ["Scrum Master", "Technical Lead"]
+    },
+    {
+      "name": "Multi-Platform E-Commerce Integration Engine",
+      "problem": "Needed to sync product, stock, order, and customer data between SaaS platform and 30+ webshops across 8 different e-commerce platforms",
+      "solution": "Designed SaaS as single source of truth with one-directional sync for merchant data, platform-specific adapters, and configurable rate limiting per platform",
+      "outcome": "30+ webshops connected across 8 platforms with consistent data sync. Platform evolved further: brainstormed with CEO and CTO to build an in-house webshop builder, which I led as squad lead and was successfully launched as a selling product.",
+      "stack": ["PHP/Symfony", "PostgreSQL", "Shopify", "Magento", "WooCommerce", "Shopware 6", "Prestashop", "Lightspeed", "Bol.com", "CCV"],
+      "role_played": ["Lead Developer", "Architect"]
+    },
+    {
+      "name": "AI-Driven SaaS Platform",
+      "problem": "Client had a startup idea to automate a multi-day manual digital marketing ad publishing workflow",
+      "solution": "Architected the core SaaS platform, optimized AI token consumption by ~50% while maintaining quality, led team from concept to functional product",
+      "outcome": "Transformed a multi-day workflow into hours. Made the product economically viable through token optimization.",
+      "stack": ["Symfony", "React", "Next.js", "Tailwind CSS", "Vercel", "Scalingo", "AI/LLM"],
+      "role_played": ["Solutions Architect", "Lead Engineer"]
+    },
+    {
+      "name": "Offline-First CRM",
+      "problem": "Field operations teams needed a CRM that worked without internet and synced reliably when connectivity was restored, without losing concurrent edits",
+      "solution": "Designed snapshot-based synchronization with field-level conflict resolution — no data is ever overwritten, only appended",
+      "outcome": "Zero incidents of silently lost data. Full audit trail. The project earned recognition from senior leadership and accelerated my career growth.",
+      "stack": ["PHP", "Symfony", "REST APIs", "MySQL"],
+      "role_played": ["Full Stack Developer", "System Architect"]
+    },
+    {
+      "name": "TechRostrum Digital IT Solutions",
+      "problem": "Wanted to build a software development business from scratch",
+      "solution": "Co-founded a solutions provider, architected client systems, led Scrum teams, managed client delivery and business operations",
+      "outcome": "Successfully delivered client projects while balancing engineering, leadership, and business ownership.",
+      "stack": ["PHP", "Laravel", "MySQL"],
+      "role_played": ["Co-founder", "Lead Engineer", "Scrum Master"]
+    }
+  ],
+  "technical_opinions": [
+    {
+      "topic": "E-commerce platform differences",
+      "position": "Most developers underestimate how different each platform's API, data model, and behavior truly is. Shopify, Magento, and WooCommerce are not interchangeable — each has unique validation rules, rate limits, and edge cases.",
+      "reasoning": "I've integrated 8+ platforms and every single one had surprises. What works on Shopify will break on Bol.com. You need platform-specific adapters, not a generic API wrapper."
+    },
+    {
+      "topic": "Happy path development",
+      "position": "Focusing on the happy path is the most common mistake in integration development. Even with extensive unit tests, there will always be scenarios you haven't covered.",
+      "reasoning": "E-commerce platforms fail in unpredictable ways — silent failures, misleading success responses, rate limits that change without notice. Plan for the unknown failures, not just the known ones."
+    },
+    {
+      "topic": "Source of truth in multi-platform sync",
+      "position": "If you're syncing data across multiple platforms, you must establish a single source of truth. Bidirectional sync sounds flexible but creates unsolvable data conflicts.",
+      "reasoning": "At StoreKeeper, we made the SaaS the authority for merchant-managed data. Changes flow from SaaS to platforms, never the reverse (except for orders and customer-initiated data). This eliminated data conflicts entirely."
+    },
+    {
+      "topic": "Scrum in real-world teams",
+      "position": "Textbook Scrum rarely works perfectly in practice. Small teams, busy stakeholders, and frequent interruptions are normal — your methodology needs to accommodate reality, not the other way around.",
+      "reasoning": "I tried pure Scrum, it broke. Tried pure Kanban, it created different problems. Ended up designing a custom Scrumban that actually fit the team. Methodology should serve the team, not the other way around."
+    },
+    {
+      "topic": "Cross-platform mobile development",
+      "position": "Evaluate cross-platform tools critically upfront. If you'll eventually need native features, starting with Expo or React Native to save time may cost you more in the long run.",
+      "reasoning": "I chose Expo for a project because we lacked an iOS developer. Eventually had to eject and bring in a native developer anyway — the transition was more expensive than starting native would have been."
+    },
+    {
+      "topic": "Architecture approach",
+      "position": "I adapt my process to the client. For non-technical stakeholders, I run brainstorm sessions with my team where I come prepared with options and we reach consensus. For technical stakeholders (CTOs), I lead with RFCs and POCs before committing to architecture.",
+      "reasoning": "Not every client needs the same rigor. A startup founder needs to see a working prototype to validate assumptions. A CTO needs a documented decision record they can challenge."
+    },
+    {
+      "topic": "Software quality",
+      "position": "I treat the products I build as masterpieces. I want to look back at something and say proudly that I was once part of architecting or developing it. Software is art.",
+      "reasoning": "This isn't just philosophy — it means I go beyond what I was asked to do. I don't just close the ticket, I think about whether the solution makes the system better or worse over time."
+    }
+  ],
+  "leadership": {
+    "style": "Guide but never take over. Trust the team to grow. Create environments where asking for help is normal, not a weakness.",
+    "team_management": "Led up to 11 developers. Assigned work, conducted 1-on-1s for onboarding and roadblock removal, performed PR reviews alongside the CTO. Focus on technical coordination and delivery rather than career management.",
+    "scope_management": "Scope swap, not scope add. When stakeholders want to inject urgent work, I frame it as a tradeoff: 'We can do X, but Y gets pushed out. Which matters more?' I also build buffer capacity (~20%) into every sprint for inevitable scope creep.",
+    "conflict_resolution": "When business wants everything shipped and engineering says it's not possible, I use my technical background to assess feasibility myself. I suggest simpler approaches, pair developers on complex tasks, or break work into smaller deliverables. I never sacrifice quality for speed — I'd rather deliver incrementally than deliver a fragile implementation quickly.",
+    "methodologies": ["Scrum", "Kanban", "Scrumban (custom)", "Agile"],
+    "philosophy": "Good communication leads to success. Even if you know what to do, you guide but never take over right away. When a developer struggles, I remind the whole team they can ask anyone for help — I never single someone out. Initiative and communication are the skills I value most."
+  },
+  "about": {
+    "career_narrative": "I started as a PHP developer building government monitoring systems and marine automation software. Within two years, I was designing the architecture for an offline-capable CRM that changed the trajectory of my career. I moved into leadership roles — leading Scrum teams, introducing CI/CD pipelines, co-founding a software company, and eventually architecting multi-platform SaaS products for international clients. My path has always been: solve the hard problem, earn more responsibility, repeat.",
+    "current_focus": "I'm looking for international Technical Lead, Engineering Manager, or Solutions Architect roles where I can combine architectural thinking, team leadership, and hands-on technical depth. I'm especially interested in companies building complex systems — SaaS, platforms, integrations — where the problems are hard enough to need someone who can think at the system level and still ship code.",
+    "differentiator": "I go beyond what I was asked to do. You can always hire a cheaper senior dev, and there are developers better than me — I don't disregard that. But I treat every product I build as a masterpiece. I think about whether my solution makes the system better or worse over time, not just whether it closes the ticket."
+  }
+}

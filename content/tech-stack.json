@@ -1,0 +1,55 @@
+{
+  "backend": [
+    { "name": "PHP", "yearsUsed": 9, "confidence": "expert", "opinion": "My foundation — 9 years of building with it, from WordPress to Symfony to custom frameworks." },
+    { "name": "Symfony", "yearsUsed": 6, "confidence": "expert", "opinion": "My go-to for complex backend systems. Clean architecture, powerful DI, battle-tested." },
+    { "name": "Node.js", "yearsUsed": 4, "confidence": "proficient", "opinion": "Great for API layers and tooling. I use it alongside PHP, not as a replacement." },
+    { "name": "Laravel", "yearsUsed": 2, "confidence": "proficient", "opinion": "Used for client projects at TechRostrum. Prefer Symfony for complex systems." },
+    { "name": "REST APIs", "yearsUsed": 7, "confidence": "expert", "opinion": "Designed and consumed hundreds of API integrations across platforms." },
+    { "name": "WordPress", "yearsUsed": 4, "confidence": "proficient", "opinion": "Custom plugin development, CMS migrations, WooCommerce integrations." },
+    { "name": "Drupal", "yearsUsed": 3, "confidence": "proficient", "opinion": "Used at OBG and Bayview. Migrated Drupal systems to WordPress." },
+    { "name": "Slim", "yearsUsed": 1, "confidence": "proficient", "opinion": "Lightweight and fast for API-driven products. Built a SaaS lead generation platform and meal planner with it." }
+  ],
+  "frontend": [
+    { "name": "React", "yearsUsed": 4, "confidence": "proficient", "opinion": "My primary frontend framework. Used across SaaS platforms and client projects." },
+    { "name": "Next.js", "yearsUsed": 2, "confidence": "proficient", "opinion": "Used for the AI SaaS platform and this portfolio. SSR + API routes make it versatile." },
+    { "name": "Tailwind CSS", "yearsUsed": 3, "confidence": "proficient", "opinion": "Fast, consistent, and pairs perfectly with component-based architecture." },
+    { "name": "Bootstrap", "yearsUsed": 5, "confidence": "proficient", "opinion": "Reliable for rapid prototyping and legacy projects." },
+    { "name": "Backbone/Marionette", "yearsUsed": 2, "confidence": "proficient", "opinion": "Legacy frontend at StoreKeeper. Maintained and extended it." },
+    { "name": "Angular", "yearsUsed": 1, "confidence": "familiar", "opinion": "Used for side projects including a custom authoring system. Understand the framework's patterns and DI model." }
+  ],
+  "mobile": [
+    { "name": "React Native", "yearsUsed": 1, "confidence": "familiar", "opinion": "Built mobile experiences. Understand cross-platform tradeoffs." },
+    { "name": "Kotlin", "yearsUsed": 1, "confidence": "familiar", "opinion": "Android development experience." },
+    { "name": "Java", "yearsUsed": 2, "confidence": "familiar", "opinion": "Built native Android apps during early freelance work. Foundation for understanding mobile architecture." }
+  ],
+  "infrastructure": [
+    { "name": "Kubernetes", "yearsUsed": 2, "confidence": "familiar", "opinion": "Used at StoreKeeper for container orchestration. Understand deployment patterns." },
+    { "name": "Azure", "yearsUsed": 2, "confidence": "familiar", "opinion": "Cloud infrastructure at StoreKeeper." },
+    { "name": "Docker", "yearsUsed": 6, "confidence": "proficient", "opinion": "Standard part of my workflow since 2019. Introduced Docker-based dev environments at Bayview." },
+    { "name": "Vercel", "yearsUsed": 2, "confidence": "proficient", "opinion": "Used for Next.js deployments. Zero-config, reliable." },
+    { "name": "Scalingo", "yearsUsed": 2, "confidence": "proficient", "opinion": "PaaS hosting for Symfony apps. Used at StoreKeeper since CC.Talent and for the AI SaaS." },
+    { "name": "GitLab CI", "yearsUsed": 2, "confidence": "proficient", "opinion": "Designed CI/CD pipelines at Bayview." },
+    { "name": "Jenkins", "yearsUsed": 1, "confidence": "familiar", "opinion": "Used alongside GitLab CI for deployment automation." },
+    { "name": "Linux Servers", "yearsUsed": 4, "confidence": "proficient", "opinion": "Server migration, optimization, and maintenance at OBG." },
+    { "name": "GCP", "yearsUsed": 2, "confidence": "familiar", "opinion": "Cloud hosting and services during agency work at TechRostrum and freelance projects." },
+    { "name": "TeamCity", "yearsUsed": 2, "confidence": "proficient", "opinion": "CI/CD at StoreKeeper. Configured build pipelines and deployment automation." },
+    { "name": "Cypress", "yearsUsed": 2, "confidence": "proficient", "opinion": "Implemented frontend automated testing at StoreKeeper, collaborating with QA to build reliable test coverage." },
+    { "name": "Sentry", "yearsUsed": 2, "confidence": "proficient", "opinion": "Error tracking and performance monitoring at StoreKeeper. Essential for production visibility." }
+  ],
+  "database": [
+    { "name": "PostgreSQL", "yearsUsed": 4, "confidence": "proficient", "opinion": "My default for anything transactional. Used at StoreKeeper for the core SaaS platform." },
+    { "name": "MySQL", "yearsUsed": 7, "confidence": "expert", "opinion": "Used across nearly every project. Solid, reliable, well-understood." },
+    { "name": "MariaDB", "yearsUsed": 2, "confidence": "proficient", "opinion": "Used for PartsUnited systems at CC.Talent." },
+    { "name": "Redis", "yearsUsed": 2, "confidence": "proficient", "opinion": "Caching and session management at StoreKeeper." }
+  ],
+  "integration": [
+    { "name": "Shopify", "yearsUsed": 1, "confidence": "familiar", "opinion": "Order sync, product management, inventory management via API." },
+    { "name": "Magento 2", "yearsUsed": 1, "confidence": "familiar", "opinion": "Complex API integration for multi-platform sync." },
+    { "name": "WooCommerce", "yearsUsed": 5, "confidence": "proficient", "opinion": "Plugin development and platform integration." },
+    { "name": "Shopware 6", "yearsUsed": 1, "confidence": "familiar", "opinion": "Platform integration for European e-commerce clients." },
+    { "name": "Prestashop", "yearsUsed": 1, "confidence": "familiar", "opinion": "Integrated into centralized SaaS platform." },
+    { "name": "Lightspeed", "yearsUsed": 1, "confidence": "familiar", "opinion": "POS and e-commerce integration." },
+    { "name": "Bol.com", "yearsUsed": 1, "confidence": "familiar", "opinion": "Dutch marketplace integration." },
+    { "name": "CCV", "yearsUsed": 1, "confidence": "familiar", "opinion": "Commerce platform integration for Dutch market." }
+  ]
+}

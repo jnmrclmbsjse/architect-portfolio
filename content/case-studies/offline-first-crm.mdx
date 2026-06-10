@@ -1,0 +1,70 @@
+---
+title: "An Offline-First CRM That Sounded Crazy — Until It Worked"
+subtitle: "How I designed a snapshot-based sync architecture as a junior developer that earned recognition from senior leadership"
+slug: "offline-first-crm"
+roles: ["software-architect", "senior-fullstack"]
+stack: ["PHP", "Symfony", "REST APIs", "MySQL", "Linux"]
+domain: "saas"
+featured: true
+order:
+  software-architect: 2
+  solutions-architect: 3
+  technical-lead: 3
+  scrum-master: 4
+  senior-fullstack: 1
+---
+
+## The Problem
+
+Oxford Business Group's field operations teams worked in low-connectivity environments where internet access was unreliable or unavailable. They needed a CRM that could function fully offline — letting users create, read, and update records without an internet connection — and then synchronize everything reliably when connectivity was restored.
+
+The core challenge: what happens when two people edit the same record, one offline and one online, and neither knows about the other's changes?
+
+## Constraints
+
+- Field teams worked in environments with intermittent or zero internet connectivity
+- Data integrity was critical — lost or overwritten records meant lost business
+- The system needed to handle concurrent edits without silently dropping changes
+- No dedicated architecture team — this was designed and built by a single developer (me)
+- Integration with existing backend systems via REST APIs was required
+
+## My Role
+
+**Full Stack Developer and de facto System Architect.** I was a junior-to-mid level developer at the time. I proposed the architecture, designed the sync mechanism, and built it. This was the project that brought me to the attention of senior leadership and my mentor.
+
+## The Architecture
+
+### Snapshot-Based Synchronization
+
+Instead of traditional last-write-wins (which silently drops changes), I designed a snapshot-based approach:
+
+1. **Every data submission creates a snapshot** — a complete record of all field values at that moment in time, tagged with the user and timestamp
+2. **Offline edits create local snapshots** stored on the device
+3. **When connectivity is restored**, offline snapshots sync to the server and create new server-side snapshots
+4. **Conflict resolution uses field-level timestamps** — for each field, the most recently updated value wins, not the most recently synced record
+5. **Both edits are always preserved** — no data is ever silently overwritten. The snapshot history allows full backtracking.
+6. **User attribution is logged** — every field change records who made it and when
+
+### Why This Works
+
+Traditional approaches force a choice: either the online edit wins (losing offline work) or the offline edit wins (losing online work). The snapshot approach avoids this by:
+
+- Never overwriting — only appending
+- Resolving at field level, not record level — if User A changed the phone number offline and User B changed the email online, both changes survive
+- Providing an audit trail — stakeholders can always trace what changed, when, and by whom
+
+## Key Decisions
+
+- **Snapshot append vs. last-write-wins:** Chose to never delete or overwrite data. More storage, but zero data loss risk. For a CRM where every record represents a business relationship, the tradeoff was obvious.
+- **Field-level vs. record-level sync:** More complex to implement, but prevents the scenario where one user's complete edit overwrites another user's unrelated field change.
+
+## The Outcome
+
+- Field teams could work reliably in low-connectivity environments without data loss
+- Zero incidents of silently overwritten data after deployment
+- The architecture earned recognition from my mentor and senior managers — it was the project that accelerated my career trajectory from junior developer to more senior roles
+- The snapshot approach proved its value: backtracking and audit capability became features that stakeholders hadn't originally asked for but relied on heavily
+
+## What I'd Do Differently
+
+I'd formalize the conflict resolution rules more explicitly upfront. The field-level timestamp approach works well for most cases, but there are edge cases (like two people editing the same field within seconds) where a more sophisticated merge strategy would be better. I'd also add a visual diff for users — showing them exactly what changed during sync rather than merging silently.

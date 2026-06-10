@@ -1,0 +1,32 @@
+---
+title: "Why snapshot-based sync instead of last-write-wins for offline data?"
+slug: "snapshot-sync-over-last-write-wins"
+category: "system-design"
+roles: ["software-architect", "senior-fullstack"]
+relatedCaseStudies: ["offline-first-crm"]
+date: "2019-03-01"
+---
+
+## Context
+
+I was building an offline-capable CRM where field teams needed to create and edit records without internet access. The fundamental challenge: when two users edit the same record — one online, one offline — whose changes survive? The standard approach, last-write-wins, silently drops the losing edit. For a CRM where every record represents a business relationship, silently losing data was unacceptable.
+
+## Decision
+
+I designed a snapshot-based synchronization system where every data submission creates an immutable snapshot of all field values, tagged with user and timestamp. When offline data syncs, conflicts are resolved at the field level (not record level) using the most recent timestamp per field. No data is ever overwritten — only appended.
+
+## Consequences
+
+**Positive:**
+- Zero incidents of silently lost data after deployment
+- Both concurrent edits always survive — if User A changed the phone number offline and User B changed the email online, both changes are preserved
+- Full audit trail emerged as a side benefit — stakeholders could trace every change to a specific user and timestamp
+- Backtracking capability — any record can be restored to any previous state
+
+**Negative:**
+- Higher storage requirements than a simple overwrite approach
+- More complex implementation than last-write-wins — field-level diffing requires careful schema design
+- Edge case: two users editing the same field within seconds still defaults to timestamp ordering, which may not always be the "right" answer
+
+**Neutral:**
+- The approach works best for CRM-style data where records are edited infrequently but accuracy matters. For high-frequency updates (like real-time collaboration), a different strategy (CRDTs, operational transforms) would be more appropriate.

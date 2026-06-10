@@ -1,0 +1,165 @@
+[
+  {
+    "company": "StoreKeeper B.V.",
+    "role": "Technical Lead / Scrum Master / Senior Full Stack Developer",
+    "period": "April 2025 – May 2026",
+    "duration": "1 year 2 months",
+    "location": "Rijssen, Netherlands (Remote)",
+    "highlights": [
+      "Designed and implemented a customized Scrumban framework after iterating through Scrum and Kanban, enabling the team to deliver 100+ backlog tickets in 6 months",
+      "Led a development squad in a multi-squad structure, owning planning, execution, technical coordination, and delivery",
+      "Took ownership of CTO-level operational workload including PR reviews, deployment coordination, technical decisions, and process improvements",
+      "Collaborated with CEO and product owner to prioritize roadmap, customer needs, and enhancements — delivered a year's worth of stale backlog",
+      "Served as key subject matter expert alongside CTO on architecture decisions, high-value features, and technical troubleshooting",
+      "Improved engineering workflows through stronger code review practices, release processes, and cross-functional collaboration",
+      "Brainstormed with CEO and CTO on building an in-house webshop builder product; led the webshop squad that turned the concept into a selling product"
+    ],
+    "stack": ["PHP/Symfony", "Backbone/Marionette", "React", "PostgreSQL", "Redis", "Kubernetes", "Azure", "Scalingo", "Tailwind CSS", "Bootstrap"],
+    "teamSize": 11,
+    "domain": "saas"
+  },
+  {
+    "company": "Self-employed",
+    "role": "Solutions Architect / Lead Engineer",
+    "period": "July 2024 – March 2025",
+    "duration": "9 months",
+    "location": "Amsterdam, Netherlands (Remote)",
+    "highlights": [
+      "Architected an AI-driven SaaS platform that transformed a multi-day manual digital marketing workflow into a few hours",
+      "Made critical architecture decisions around AI token optimization — reduced consumption by ~50% while maintaining response accuracy",
+      "Led the development team across planning, implementation, and delivery of core product features",
+      "Managed client communication, translating business requirements into actionable technical plans",
+      "Moved the platform from startup concept toward a marketable SaaS product"
+    ],
+    "stack": ["Symfony", "React", "Next.js", "Tailwind CSS", "Vercel", "Scalingo"],
+    "teamSize": null,
+    "domain": "ai"
+  },
+  {
+    "company": "CC.Talent (CodingChiefs)",
+    "role": "Lead Developer",
+    "period": "June 2021 – June 2024",
+    "duration": "3 years 1 month",
+    "location": "Amsterdam, Netherlands (Remote)",
+    "highlights": [
+      "Led full-stack development and technical delivery for StoreKeeper B.V. and PartsUnited B.V.",
+      "Expanded StoreKeeper's SaaS platform by integrating 8+ e-commerce platforms (Shopify, Magento, Prestashop, CCV, etc.) connecting 30+ webshops",
+      "For PartsUnited: modernized legacy web systems by refactoring into a custom framework built with Symfony components, connecting centralized databases to 100+ webshops",
+      "Mentored junior developers on technologies, internal frameworks, coding standards, and delivery expectations",
+      "Strengthened agile delivery practices through Scrum-based workflows, sprint planning, and consistent releases"
+    ],
+    "stack": ["PHP/Symfony", "Symfony Components", "PostgreSQL", "MariaDB", "API Integrations", "Shopify", "Magento", "Prestashop", "CCV"],
+    "teamSize": null,
+    "domain": "saas"
+  },
+  {
+    "company": "Oxford Business Group",
+    "role": "Senior Full Stack Developer",
+    "period": "July 2021 – May 2023",
+    "duration": "1 year 11 months",
+    "location": "Greater London (Remote)",
+    "highlights": [
+      "Migrated web and e-commerce system from Drupal to WordPress and WooCommerce",
+      "Implemented SEO-focused enhancements improving organic discoverability",
+      "Developed custom WordPress plugins to reduce dependency on core changes",
+      "Mentored developers and interns on coding practices and scalable implementation"
+    ],
+    "stack": ["WordPress", "WooCommerce", "Drupal", "PHP", "MySQL"],
+    "teamSize": null,
+    "domain": "ecommerce"
+  },
+  {
+    "company": "Bayview Technologies, Inc",
+    "role": "Software Engineer, Lead",
+    "period": "August 2019 – June 2021",
+    "duration": "1 year 11 months",
+    "location": "Makati, Philippines",
+    "highlights": [
+      "Led software engineering delivery combining hands-on development, Scrum leadership, and CI/CD implementation",
+      "Served as Scrum Master leading Agile execution, sprint coordination, and delivery tracking",
+      "Introduced Docker-based environments to standardize local setup",
+      "Key developer and SME for React and Node.js adoption in the company",
+      "Designed CI/CD pipelines using GitLab CI and Jenkins"
+    ],
+    "stack": ["PHP", "Drupal", "React", "Node.js", "Docker", "GitLab CI", "Jenkins"],
+    "teamSize": null,
+    "domain": "saas"
+  },
+  {
+    "company": "TechRostrum Digital IT Solutions",
+    "role": "Co-founder / Lead Full Stack Engineer",
+    "period": "February 2020 – March 2021",
+    "duration": "1 year 2 months",
+    "location": "Pasig, Philippines",
+    "highlights": [
+      "Co-founded a software development solutions provider",
+      "Architected full-system solutions for client projects with scalable foundations",
+      "Led and mentored a Scrum team for structured delivery and task ownership",
+      "Balanced hands-on full-stack development with team coordination, client delivery, and business ownership"
+    ],
+    "stack": ["PHP", "Laravel", "MySQL", "CI/CD"],
+    "teamSize": null,
+    "domain": "saas"
+  },
+  {
+    "company": "Oxford Business Group",
+    "role": "Full Stack PHP Developer",
+    "period": "February 2018 – August 2019",
+    "duration": "1 year 7 months",
+    "location": "London, United Kingdom",
+    "highlights": [
+      "Designed the technical architecture for an offline-capable CRM with REST API synchronization",
+      "Optimized system efficiency and application architecture",
+      "Supported migration and maintenance of Linux-based servers",
+      "Maintained and improved CRM and e-commerce functionality"
+    ],
+    "stack": ["PHP", "Symfony", "REST APIs", "MySQL", "Linux"],
+    "teamSize": null,
+    "domain": "saas"
+  },
+  {
+    "company": "Strategy Lions",
+    "role": "Full Stack PHP Developer",
+    "period": "June 2018 – February 2019",
+    "duration": "9 months",
+    "location": "Australia (Remote)",
+    "highlights": [
+      "Developed SaaS-based lead generation product features",
+      "Designed custom WordPress module for service integration",
+      "Supported onboarding and mentoring of off-site developers"
+    ],
+    "stack": ["PHP", "WordPress"],
+    "teamSize": null,
+    "domain": "saas"
+  },
+  {
+    "company": "Kockum Sonics AB",
+    "role": "Marine Systems Developer",
+    "period": "August 2017 – February 2018",
+    "duration": "7 months",
+    "location": "Subic, Philippines (Sweden-based team)",
+    "highlights": [
+      "Built cargo and ballast automation system from technical documentation",
+      "Collaborated with Sweden-based engineering team on core product development",
+      "Designed and built a sales automation system and CRM prototype"
+    ],
+    "stack": ["Software Development", "Automation Systems", "CRM"],
+    "teamSize": null,
+    "domain": "saas"
+  },
+  {
+    "company": "Municipality of Balanga",
+    "role": "PHP Developer",
+    "period": "February 2017 – August 2017",
+    "duration": "7 months",
+    "location": "Balanga, Philippines",
+    "highlights": [
+      "Designed a cooperative monitoring system for provincial-level governance",
+      "Proposed a ride-hailing concept for tricycles with public driver violation portal",
+      "Worked independently as freelance developer with stakeholder coordination"
+    ],
+    "stack": ["PHP"],
+    "teamSize": null,
+    "domain": "saas"
+  }
+]

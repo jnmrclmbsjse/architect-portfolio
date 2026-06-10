@@ -1,0 +1,31 @@
+---
+title: "When should you eject from Expo and go native?"
+slug: "when-to-eject-from-expo"
+category: "stack-choice"
+roles: ["software-architect", "senior-fullstack"]
+relatedCaseStudies: []
+date: "2021-06-01"
+---
+
+## Context
+
+I chose Expo for a mobile app project primarily because my team lacked an iOS developer. Expo's cross-platform approach seemed like the pragmatic choice — ship to both platforms with one codebase and one team. It worked initially, but as the project matured, we hit walls: native features we needed weren't available in React Native/Expo at the time, and the performance gap for certain interactions was noticeable.
+
+## Decision
+
+I decided to eject from Expo and move toward native development. I brought in a former colleague with iOS expertise to handle the native layer. The ejection was painful but necessary — we had reached the point where working around Expo's limitations was costing more time than the cross-platform convenience was saving.
+
+## Consequences
+
+**Positive:**
+- Access to native features that were previously unavailable or unreliable
+- Faster performance for the interactions that mattered most to users
+- Brought in specialized expertise that improved the product quality beyond what the original team could deliver
+
+**Negative:**
+- Ejection required significant rework — not all Expo-managed code translates cleanly
+- Team now needed iOS expertise, increasing the resource requirement
+- Development velocity temporarily dropped during the transition
+
+**Neutral:**
+- This was a mistake I learned from permanently. I now evaluate cross-platform tools more critically upfront: what native features will we eventually need? Is the team's current skill gap a short-term convenience or a long-term constraint? If the answer is "we'll eventually need native," it's often cheaper to start there.

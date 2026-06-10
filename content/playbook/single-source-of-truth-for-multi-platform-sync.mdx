@@ -1,0 +1,32 @@
+---
+title: "Why make the SaaS the single source of truth instead of syncing bidirectionally?"
+slug: "single-source-of-truth-for-multi-platform-sync"
+category: "integration"
+roles: ["software-architect", "solutions-architect"]
+relatedCaseStudies: ["multi-platform-integration-engine"]
+date: "2022-06-01"
+---
+
+## Context
+
+When syncing data across 100+ webshops on 8 different e-commerce platforms, the question of "which system owns the data?" determines everything. Bidirectional sync (every platform can update the SaaS, and the SaaS updates every platform) sounds flexible, but it creates an unsolvable problem: when two platforms change the same product's price simultaneously, which one is correct?
+
+## Decision
+
+I established a clear rule: the SaaS platform is the single source of truth for all merchant-managed data (products, pricing, stock levels, descriptions). Sync flows one direction — SaaS to platforms. Only data that genuinely originates on the platform side (new customer orders, customer-initiated changes) syncs back from platform to SaaS.
+
+This means merchants must make changes in the SaaS, not directly on individual webshops. This constraint is the design — it's what makes consistency possible.
+
+## Consequences
+
+**Positive:**
+- Data conflicts are eliminated entirely for merchant-managed data — there is always one authoritative version
+- Debugging becomes dramatically simpler — if a product has the wrong price on Shopify, the question is "did the SaaS send the right data?" not "which of 8 platforms overwrote which?"
+- Adding new platforms doesn't increase conflict risk — the source of truth doesn't change
+
+**Negative:**
+- Merchants who are used to editing products directly on Shopify or Magento need to change their workflow
+- Some platform-specific features (like Shopify's metafields or Bol.com's Dutch-specific attributes) require careful handling — the SaaS needs to support platform-specific data without being coupled to any single platform's model
+
+**Neutral:**
+- This pattern works best for centralized commerce operations. For merchants who only use one platform, the SaaS layer adds overhead without much benefit. The value scales with the number of connected platforms.
