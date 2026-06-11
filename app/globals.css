@@ -131,3 +131,28 @@
     @apply font-sans;
   }
 }
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-entrance {
+  animation: hero-enter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.hero-entrance-1 { animation-delay: 0ms; }
+.hero-entrance-2 { animation-delay: 100ms; }
+.hero-entrance-3 { animation-delay: 200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-entrance {
+    animation: none;
+  }
+}

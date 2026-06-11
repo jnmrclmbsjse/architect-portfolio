@@ -17,11 +17,11 @@ export function HeroSection() {
     <section className="py-24 sm:py-32">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
-          <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="hero-entrance hero-entrance-1 font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             Junmar Jose
           </h1>
 
-          <div className="min-h-[3.5rem] sm:min-h-[4rem]">
+          <div className="hero-entrance hero-entrance-2 min-h-[3.5rem] sm:min-h-[4rem]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
                 key={selectedRole ?? "default"}
@@ -39,7 +39,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="hero-entrance hero-entrance-3 flex flex-col gap-3">
           <p className="text-sm text-muted-foreground">
             {selectedRole ? "Viewing as:" : "What role are you hiring for?"}
           </p>
