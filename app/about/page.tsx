@@ -7,7 +7,7 @@ import experienceData from "@/content/experience.json";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Software architect and technical lead with 9+ years building systems across SaaS, e-commerce, AI, and mobile in the Netherlands, UK, Australia, and the Philippines.",
+    "Software architect and technical lead with 9+ years building systems across SaaS, e-commerce, AI, fintech, and government platforms in the Netherlands, UK, Australia, and the Philippines.",
 };
 
 interface Experience {
@@ -43,9 +43,18 @@ export default function AboutPage() {
           <p>
             My work sits at the intersection of architecture decisions and
             delivery. I design the system, lead the team, and still write the
-            code. Over 9 years I've gone from writing PHP to leading squads of
-            up to 11 engineers, introducing development methodologies where none
-            existed, and turning stale backlogs into shipped products.
+            code. Over 9 years I've gone from writing PHP for government
+            monitoring systems to leading squads of up to 11 engineers,
+            co-founding a software company, and architecting platforms that
+            connect 30+ webshops across 8 e-commerce platforms.
+          </p>
+          <p>
+            I've modernized legacy OsCommerce systems into maintainable
+            Symfony codebases, built workflow automation libraries for payment
+            orchestration, designed microservice architectures for a national
+            postal service, and introduced development methodologies where none
+            existed. The thread through all of it: solve the hard problem, earn
+            more responsibility, repeat.
           </p>
           <p>
             I care about honest engineering: choosing the right tool instead of
