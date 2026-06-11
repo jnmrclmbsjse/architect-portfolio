@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-border py-12">
       <PageContainer>
         <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             <h3 className="font-heading text-lg font-semibold">
               Looking for an architect who still writes code?
             </h3>
@@ -15,6 +15,14 @@ export function Footer() {
               Open to Technical Lead, Solutions Architect, and senior engineering
               roles.
             </p>
+            <div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                Get in touch
+              </Link>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-6 text-sm">

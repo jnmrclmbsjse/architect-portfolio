@@ -32,7 +32,23 @@ export function TechStackSection() {
 
   return (
     <section ref={ref} className="py-16">
-      <h2 className="font-heading text-2xl font-semibold mb-8">Tech Stack</h2>
+      <div className="flex flex-col gap-2 mb-8 sm:flex-row sm:items-baseline sm:justify-between">
+        <h2 className="font-heading text-2xl font-semibold">Tech Stack</h2>
+        <div className="flex items-center gap-3 text-[10px] text-muted-foreground font-mono">
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block h-3 w-6 rounded-sm border border-primary/50" />
+            expert
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block h-3 w-6 rounded-sm border border-border" />
+            proficient
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block h-3 w-6 rounded-sm border border-dashed border-border" />
+            familiar
+          </span>
+        </div>
+      </div>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {categories.map(([key, techs], catIdx) => (
           <motion.div
@@ -50,6 +66,7 @@ export function TechStackSection() {
                 <Badge
                   key={tech.name}
                   variant="outline"
+                  aria-label={`${tech.name}, ${tech.confidence} level`}
                   className={cn(
                     "font-mono text-[11px] font-normal",
                     confidenceStyles[tech.confidence]

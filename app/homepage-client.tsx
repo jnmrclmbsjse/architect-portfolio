@@ -1,7 +1,7 @@
 "use client";
 
 import { useRoleFilter } from "@/hooks/useRoleFilter";
-import { HeroSection } from "@/components/home/HeroSection";
+import { HeroSection, RoleFilterSection } from "@/components/home/HeroSection";
 import { ProofBar } from "@/components/home/ProofBar";
 import { HowIWork } from "@/components/home/HowIWork";
 import { FeaturedCaseStudies } from "@/components/home/FeaturedCaseStudies";
@@ -22,6 +22,7 @@ export function HomepageClient({ caseStudies, decisions }: HomepageClientProps) 
     <>
       <HeroSection />
       <ProofBar />
+      <RoleFilterSection />
       <HowIWork selectedRole={selectedRole} />
       <FeaturedCaseStudies
         caseStudies={caseStudies}

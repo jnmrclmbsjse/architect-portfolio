@@ -2,19 +2,19 @@
   "architect": {
     "title": "Architect",
     "subtitle": "Design Systems",
-    "description": "I start with the problem, not the technology. I map constraints, identify tradeoffs, and design systems that balance cost, scalability, and team capability. I've architected SaaS platforms, multi-platform integration engines, AI-driven products, and offline-first systems — always with long-term maintainability in mind.",
+    "description": "I start with the problem, not the technology. I map constraints, identify tradeoffs, and design systems that balance cost, scalability, and team capability. I've architected SaaS platforms, multi-platform integration engines, AI-driven products, and offline-first systems, always with long-term maintainability in mind.",
     "signals": ["System design", "API architecture", "Platform integration", "Tradeoff analysis", "Scalability planning"]
   },
   "lead": {
     "title": "Lead",
     "subtitle": "Teams & Process",
-    "description": "I guide but never take over. I trust teams to grow by creating environments where asking for help is normal, not a weakness. I've designed delivery frameworks from scratch when textbook methodologies didn't fit, and I protect teams from scope creep by forcing tradeoff conversations with stakeholders — scope swaps, not scope additions.",
+    "description": "I guide but never take over. I trust teams to grow by creating environments where asking for help is normal, not a weakness. I've designed delivery frameworks from scratch when textbook methodologies didn't fit, and I protect teams from scope creep by forcing tradeoff conversations with stakeholders — scope swaps, never scope additions.",
     "signals": ["Scrum mastery", "Custom process design", "Scope management", "Mentoring", "Cross-functional collaboration"]
   },
   "build": {
     "title": "Build",
     "subtitle": "Ship Products",
-    "description": "I remain close enough to the code to guide architecture decisions, review pull requests, unblock developers, and build features myself when needed. My hands-on background in PHP/Symfony, React, and Node.js means I can assess what's technically feasible, suggest simpler approaches, and deliver alongside the team — not just manage from a distance.",
+    "description": "I remain close enough to the code to guide architecture decisions, review pull requests, unblock developers, and build features myself when needed. My hands-on background in PHP/Symfony, React, and Node.js means I can assess what's technically feasible, suggest simpler approaches, and deliver alongside the team instead of managing from a distance.",
     "signals": ["Full-stack development", "Code reviews", "CI/CD", "Performance optimization", "Legacy modernization"]
   }
 }
