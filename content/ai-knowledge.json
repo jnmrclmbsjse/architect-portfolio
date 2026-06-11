@@ -77,9 +77,10 @@
         "Served as Scrum Master for Agile execution",
         "Introduced Docker-based development environments",
         "Key developer and SME for React and Node.js adoption",
-        "Designed CI/CD pipelines with GitLab CI and Jenkins"
+        "Designed CI/CD pipelines with GitLab CI and Jenkins",
+        "Built a TypeScript workflow automation library (Chores) that orchestrated cashiering and payment transaction flows — concept from the Solutions Architect, materialized by me"
       ],
-      "stack": ["PHP", "Drupal", "React", "Node.js", "Docker", "GitLab CI", "Jenkins"]
+      "stack": ["PHP", "Drupal", "React", "Node.js", "TypeScript", "Docker", "GitLab CI", "Jenkins"]
     },
     {
       "company": "TechRostrum Digital IT Solutions",
@@ -87,10 +88,11 @@
       "period": "February 2020 – March 2021",
       "highlights": [
         "Co-founded a software development solutions provider",
-        "Architected full-system solutions for client projects",
-        "Balanced engineering, team leadership, and business ownership"
+        "Architected full-system solutions for client projects including a national postal service digital platform",
+        "Designed microservice architecture with API gateway pattern for a government postal corporation's mobile platform",
+        "Balanced engineering, team leadership, Scrum process, and business ownership"
       ],
-      "stack": ["PHP", "Laravel", "MySQL"]
+      "stack": ["PHP", "Laravel", "MySQL", "Node.js", "MongoDB", "React Native", "Microservices"]
     },
     {
       "company": "Kockum Sonics AB",
@@ -144,6 +146,30 @@
       "outcome": "Successfully delivered client projects while balancing engineering, leadership, and business ownership.",
       "stack": ["PHP", "Laravel", "MySQL"],
       "role_played": ["Co-founder", "Lead Engineer", "Scrum Master"]
+    },
+    {
+      "name": "PartsUnited Legacy Modernization",
+      "problem": "PartsUnited ran on an old OsCommerce installation the business owner had been modifying himself for years — no documentation, no separation of concerns, security risks from vanilla PHP. The same codebase powered 100+ webshops, each with its own database.",
+      "solution": "Incrementally modernized the platform from OsCommerce to Symfony without a full rewrite. Spent substantial weekly time with the CEO to extract undocumented business rules. Rebuilt fragile modules behind existing interfaces while the system continued running. Documented business logic for the junior developers who would maintain it after my departure.",
+      "outcome": "Cleaner, documented codebase built on Symfony with proper security components. Load tests confirmed no performance degradation from the framework. Junior developers successfully continued development after I left.",
+      "stack": ["PHP/Symfony", "OsCommerce", "MySQL"],
+      "role_played": ["Solutions Architect", "Senior Full Stack Developer"]
+    },
+    {
+      "name": "Payment Workflow Automation Library (Chores)",
+      "problem": "At Bayview Technologies, cashiering and payment flows involved multiple sequential steps — validating transactions, calling third-party payment APIs, handling responses, generating receipts. The steps were hardcoded in application logic, making it difficult to modify flows or add new payment methods.",
+      "solution": "Built a TypeScript task runner library called Chores with a promise-based architecture. Workflows are defined as JSON configurations with sequential steps. The library has four core components: Registry (validates tasks), Executor (runs individual tasks), Orchestrator (manages sequential flow), and Commands (JSON workflow definitions). The concept came from the Solutions Architect; I designed the architecture and built it.",
+      "outcome": "Payment flow automation moved from hardcoded logic to configurable workflows. Adding new payment methods became a configuration change. The library was generic enough to be reused beyond payment flows and published as open source.",
+      "stack": ["TypeScript", "Node.js"],
+      "role_played": ["Senior Full Stack Developer", "Software Architect"]
+    },
+    {
+      "name": "Government Postal Digital Platform",
+      "problem": "A national postal corporation needed to digitize their entire service offering — mail services, financial transactions (bill payments, government payouts, money transfers), logistics, and postal IDs — into a single mobile platform for Android and iOS.",
+      "solution": "Designed a microservice architecture with a central API gateway: mobile clients → Cloudflare → Varnish cache → Load Balancer → Gateway API → domain-specific service APIs (Bills, Payout, Money Transfer, Logistics, Express Post, IEMS/DEMS). Built a separate back-office admin system (MOAS) with dashboards, user management, and analytics. OAuth extracted as standalone service shared across mobile and admin apps. MongoDB for flexible document schemas across diverse service domains.",
+      "outcome": "Platform reached near-MVP completion covering 5 major service categories with dozens of sub-services. Both Android and iOS apps delivered with feature parity. Integrated with multiple external service providers. Project did not launch due to discontinued government funding.",
+      "stack": ["React Native", "Node.js", "MongoDB", "Cloudflare", "Varnish", "OAuth", "Microservices"],
+      "role_played": ["Solutions Architect", "Software Architect", "Scrum Master", "Senior Full Stack Developer"]
     }
   ],
   "technical_opinions": [
@@ -171,6 +197,21 @@
       "topic": "Cross-platform mobile development",
       "position": "Evaluate cross-platform tools critically upfront. If you'll eventually need native features, starting with Expo or React Native to save time may cost you more in the long run.",
       "reasoning": "I chose Expo for a project because we lacked an iOS developer. Eventually had to eject and bring in a native developer anyway — the transition was more expensive than starting native would have been."
+    },
+    {
+      "topic": "Legacy modernization",
+      "position": "Never rewrite a revenue-generating system from scratch. Modernize incrementally — replace the most fragile modules first while the old system keeps running.",
+      "reasoning": "At PartsUnited, the business couldn't afford downtime. I used the strangler fig pattern: rebuilt modules behind existing interfaces, ran load tests to prove no performance hit, and documented business rules that only the CEO knew. The system stayed live throughout."
+    },
+    {
+      "topic": "Workflow automation",
+      "position": "Payment and transaction flows should be data-driven configurations, not hardcoded logic. Define what steps to run in JSON; implement each step independently.",
+      "reasoning": "At Bayview, I built the Chores library to decouple workflow definitions from implementations. Adding a new payment method became a configuration change instead of a code change. The library's graceful degradation meant you could define a complete workflow before implementing every step."
+    },
+    {
+      "topic": "Microservice boundaries",
+      "position": "Split services by business domain, not by technical layer. Each service should own its data, its external integrations, and its failure modes independently.",
+      "reasoning": "For the government postal platform, I decomposed the backend into domain-aligned services — Bills, Payout, Money Transfer, Logistics, Express Post. Each service owned its provider integrations. When the Bills API had issues with a payment processor, it didn't affect mail tracking or postal IDs."
     },
     {
       "topic": "Architecture approach",
