@@ -62,7 +62,7 @@ export default function ContactPage() {
           ))}
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg border border-border p-6">
             <h2 className="font-heading text-sm font-semibold mb-2">
               Availability
@@ -72,6 +72,26 @@ export default function ContactPage() {
               across European and overlapping time zones.
             </p>
           </div>
+          <div className="rounded-lg border border-border p-6">
+            <h2 className="font-heading text-sm font-semibold mb-2">
+              What I'm looking for
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Roles where I own architecture decisions and still ship code.
+              Teams that value clear documentation and honest trade-off
+              conversations over hype cycles.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <p className="text-sm text-muted-foreground">
+            Want to learn more before reaching out? Press{" "}
+            <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">
+              ?
+            </kbd>{" "}
+            to ask the AI chat anything about my experience.
+          </p>
         </div>
       </section>
     </PageContainer>
