@@ -1,0 +1,36 @@
+---
+title: "How do you take over a stale backlog and make it productive?"
+slug: "how-to-take-over-a-stale-backlog"
+category: "team-process"
+roles: ["technical-lead", "scrum-master"]
+relatedCaseStudies: ["development-methodology-transformation"]
+date: "2023-03-01"
+---
+
+## Context
+
+When I joined the StoreKeeper SaaS team, I inherited a backlog with over a year of accumulated tickets. Many were vague, duplicated, or described problems that had already been worked around. The team had no formal prioritization — tickets were picked based on whoever shouted loudest or whichever customer complained most recently. Developers spent more time interpreting tickets than building software.
+
+## Decision
+
+I treated the backlog as a codebase: it needed a refactor, not a rewrite. I didn't throw everything out and start fresh — that would have lost legitimate context from customer conversations and past decisions. Instead, I ran a structured triage over several weeks.
+
+**Step 1:** Categorize every ticket as active (still relevant), stale (problem may no longer exist), or duplicate. Stale tickets got a comment explaining why and were closed — not deleted, so the history survived.
+
+**Step 2:** Rewrite surviving tickets to a consistent format: what's the problem, who does it affect, and what does done look like. Vague tickets like "fix sync issues" became specific: "Stock sync fails silently when Shopify rate-limits bulk updates — add retry with exponential backoff and surface the failure in the merchant dashboard."
+
+**Step 3:** Establish a prioritization framework tied to business impact. Customer-facing bugs ranked above internal tooling. Revenue-impacting issues ranked above convenience improvements. This removed the "loudest voice wins" dynamic.
+
+## Consequences
+
+**Positive:**
+- The team cleared 100+ tickets in 6 months, including the year-old stale backlog
+- Sprint planning dropped from 90+ minutes of confusion to 30 minutes of focused discussion
+- Developers reported less frustration — they could pick up a ticket and start working without a 20-minute archaeology session
+
+**Negative:**
+- The initial triage took significant time that could have gone toward feature work
+- Required a substantial number of hours from the already-busy CEO every week to ensure the overhaul would work
+
+**Neutral:**
+- Backlog hygiene is not a one-time event. Without ongoing grooming discipline, any backlog returns to chaos within a few months. The triage process I built became a recurring practice, not a project.

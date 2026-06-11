@@ -1,0 +1,32 @@
+---
+title: "When should a tech lead also be the Scrum Master?"
+slug: "when-should-tech-lead-also-be-scrum-master"
+category: "team-process"
+roles: ["scrum-master", "technical-lead"]
+relatedCaseStudies: ["development-methodology-transformation"]
+date: "2022-01-01"
+---
+
+## Context
+
+At two different companies — Bayview Technologies and StoreKeeper — I held both the Technical Lead and Scrum Master roles simultaneously. The textbook answer is "never combine these roles" because the tech lead drives technical decisions while the Scrum Master protects the team from pressure. In theory, one person can't do both without a conflict of interest. In practice, small teams (under 8 developers) often can't justify a dedicated Scrum Master, and the alternative is no process at all.
+
+## Decision
+
+I took on both roles deliberately, with one constraint: I separated the hats visually in how I ran meetings. During sprint planning, I was the facilitator — asking the team what they could commit to, not telling them. During technical discussions, I was the lead — proposing architecture, reviewing code, making stack decisions. The team knew which mode I was in based on the question I was asking.
+
+The key insight was scope management. As tech lead, I could assess feasibility myself when business stakeholders pushed for more scope. As Scrum Master, I could frame the tradeoff clearly: "We can take this on, but it replaces feature Y. Which matters more this sprint?" Having both perspectives in one person actually made the scope conversation faster because there was no handoff between "the person who understands the technical cost" and "the person who negotiates with stakeholders."
+
+## Consequences
+
+**Positive:**
+- Faster decision-making — no back-and-forth between separate tech lead and process roles
+- Scope negotiations were grounded in real technical understanding, not estimates passed through a middleman
+- The team still had structured process (retros, planning, standups) when they otherwise would have had none
+
+**Negative:**
+- Risk of blind spots — when I was wrong about feasibility, there was no Scrum Master to push back on my optimism
+- Harder to protect the team from myself — when I felt pressure from deadlines, I had to consciously switch from "let's push harder" to "let's cut scope"
+
+**Neutral:**
+- This works for teams of 4-8 developers where the tech lead has strong communication skills. Above 8, the coordination overhead makes a dedicated Scrum Master worth it. Below 4, you probably don't need formal process at all.

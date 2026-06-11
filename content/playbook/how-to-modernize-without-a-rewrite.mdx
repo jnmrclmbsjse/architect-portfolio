@@ -1,0 +1,35 @@
+---
+title: "How do you modernize a legacy system without a full rewrite?"
+slug: "how-to-modernize-without-a-rewrite"
+category: "system-design"
+roles: ["solutions-architect", "software-architect", "senior-fullstack"]
+relatedCaseStudies: []
+date: "2022-09-01"
+---
+
+## Context
+
+At PartsUnited, the core platform was an old OsCommerce installation that the business owner had been modifying himself over the years. He had enough technical knowledge to make changes, but without engineering discipline the system had become a tangled mess — custom modifications layered on top of each other, no separation of concerns, and no documentation of what was changed or why. A full rewrite was tempting, but the business was running on this system daily and couldn't afford to go offline while a replacement was built.
+
+## Decision
+
+I chose to modernize incrementally rather than rewrite from scratch. The approach was to identify the most fragile and business-critical parts of the system, isolate them, and rebuild them behind the existing interfaces so the rest of the application continued working.
+
+**Assessment first:** I spent time understanding the owner's modifications — which ones were load-bearing business logic and which were workarounds that could be removed. This required substantial weekly time with the CEO, walking through the system together, because he was often the only person who knew why a particular change existed.
+
+**Incremental replacement:** Each modernized module was built with clear boundaries and tested against the existing behavior before replacing the old code. The old OsCommerce patterns stayed in place for parts that worked fine — the goal was to fix what was broken, not to rewrite what wasn't.
+
+**Knowledge transfer:** As I rebuilt each module, I documented the business rules that had previously existed only in the CEO's head or buried in uncommented code.
+
+## Consequences
+
+**Positive:**
+- The platform stabilized without any downtime or "migration day" — the business continued operating throughout
+- Business logic that had been trapped in spaghetti code became maintainable and documented
+- The CEO regained confidence in the system and could focus on the business instead of firefighting technical issues
+
+**Negative:**
+- Living with partial modernization meant some parts of the system were clean while adjacent code remained messy, creating an inconsistent developer experience
+
+**Neutral:**
+- This strategy only works when you have access to the person who understands the legacy system's intent. Without the CEO's time investment, I would have been guessing at business rules. The collaboration cost was the price of doing it safely.
