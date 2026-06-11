@@ -11,7 +11,7 @@ const stats = [
   { value: "30+", label: "webshops connected" },
 ];
 
-const domains = ["SaaS", "E-commerce", "AI", "CRM"];
+const domains = ["SaaS", "E-commerce", "AI", "CRM", "Fintech", "Government"];
 
 export function ProofBar() {
   const ref = useRef<HTMLDivElement>(null);
