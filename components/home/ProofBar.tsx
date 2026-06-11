@@ -1,7 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const stats = [
@@ -17,12 +17,17 @@ export function ProofBar() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const shouldReduceMotion = useReducedMotion();
+  const hasMounted = useRef(false);
+
+  useEffect(() => {
+    hasMounted.current = true;
+  }, []);
 
   return (
     <section ref={ref} className="py-12 border-y border-border">
       <motion.div
         className="flex flex-col gap-6"
-        initial={shouldReduceMotion ? false : { opacity: 0 }}
+        initial={shouldReduceMotion || !hasMounted.current ? false : { opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5 }}
       >

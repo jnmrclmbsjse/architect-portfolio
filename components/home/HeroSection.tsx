@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { type RoleSlug, roles, getRoleBySlug } from "@/lib/roles";
 import { useRoleFilter } from "@/hooks/useRoleFilter";
@@ -8,6 +9,11 @@ export function HeroSection() {
   const { selectedRole } = useRoleFilter();
   const role = selectedRole ? getRoleBySlug(selectedRole) : null;
   const shouldReduceMotion = useReducedMotion();
+  const hasMounted = useRef(false);
+
+  useEffect(() => {
+    hasMounted.current = true;
+  }, []);
 
   const transition = shouldReduceMotion
     ? { duration: 0 }
@@ -25,7 +31,7 @@ export function HeroSection() {
             <motion.p
               key={selectedRole ?? "default"}
               className="max-w-3xl text-lg text-muted-foreground sm:text-xl"
-              initial={{ opacity: 0, y: 8 }}
+              initial={hasMounted.current ? { opacity: 0, y: 8 } : false}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={transition}
@@ -85,9 +91,9 @@ export function RoleFilterSection() {
           {selectedRole ? (
             <motion.button
               key="clear"
-              initial={{ opacity: 0 }}
+              initial={shouldReduceMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              exit={shouldReduceMotion ? undefined : { opacity: 0 }}
               transition={transition}
               onClick={() => setRole(null)}
               className="self-start text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -97,9 +103,9 @@ export function RoleFilterSection() {
           ) : (
             <motion.p
               key="hint"
-              initial={{ opacity: 0 }}
+              initial={shouldReduceMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              exit={shouldReduceMotion ? undefined : { opacity: 0 }}
               transition={transition}
               className="text-xs text-muted-foreground"
             >
