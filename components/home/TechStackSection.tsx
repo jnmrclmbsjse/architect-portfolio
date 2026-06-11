@@ -16,7 +16,7 @@ const categoryLabels: Record<string, string> = {
 };
 
 const confidenceStyles: Record<string, string> = {
-  expert: "border-primary/50 text-primary",
+  expert: "border-primary/50 text-foreground",
   proficient: "border-border text-muted-foreground",
   familiar: "border-dashed border-border text-muted-foreground",
 };

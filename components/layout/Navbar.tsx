@@ -39,6 +39,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={`text-sm transition-colors hover:text-foreground ${
                     isActive ? "text-foreground" : "text-muted-foreground"
                   }`}

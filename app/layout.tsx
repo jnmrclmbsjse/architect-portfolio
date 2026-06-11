@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Sora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/layout/Navbar";
@@ -95,6 +96,7 @@ export default function RootLayout({
             <Footer />
             <ChatBubble />
           </Providers>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

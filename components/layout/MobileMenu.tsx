@@ -35,6 +35,7 @@ export function MobileMenu({ open, onOpenChange, links }: MobileMenuProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => onOpenChange(false)}
+                  aria-current={isActive ? "page" : undefined}
                   className={`text-sm transition-colors hover:text-foreground ${
                     isActive ? "text-foreground" : "text-muted-foreground"
                   }`}
