@@ -33,8 +33,8 @@ export function HeroSection() {
             Junmar Jose
           </motion.h1>
 
-          <motion.div className="min-h-[3.5rem] sm:min-h-[4rem]" {...entrance(0.1)}>
-            <AnimatePresence mode="wait">
+          <div className="min-h-[3.5rem] sm:min-h-[4rem]">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.p
                 key={selectedRole ?? "default"}
                 className="max-w-3xl text-lg text-muted-foreground sm:text-xl"
@@ -48,7 +48,7 @@ export function HeroSection() {
                   : "I design systems, lead teams, and build full-stack products from idea to production."}
               </motion.p>
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
 
         <motion.div className="flex flex-col gap-3" {...entrance(0.2)}>
