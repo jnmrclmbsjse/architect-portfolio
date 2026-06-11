@@ -1,0 +1,76 @@
+---
+title: "Architecting a National Postal Service's Digital Platform from Scratch"
+subtitle: "Designed and led development of a mobile-first platform digitizing mail, financial, and logistics services for a government postal corporation"
+slug: "government-postal-digital-platform"
+roles: ["solutions-architect", "software-architect", "scrum-master", "senior-fullstack"]
+stack: ["React Native", "Node.js", "MongoDB", "Cloudflare", "Varnish", "OAuth", "Microservices"]
+domain: "government"
+featured: true
+order:
+  software-architect: 3
+  solutions-architect: 4
+  technical-lead: 3
+  scrum-master: 2
+  senior-fullstack: 5
+---
+
+## The Problem
+
+A national postal corporation wanted to digitize their entire service offering — mail services, financial transactions, logistics, and government-issued postal IDs — into a single mobile platform for both Android and iOS. Citizens would be able to send mail, pay bills, receive government payouts, transfer money, and manage postal IDs from their phones instead of visiting physical branches.
+
+The scope was massive: dozens of service types across 5 major categories, integration with external payment providers and government agencies, a back-office admin system for operations staff, and the security requirements that come with handling financial transactions and government identity documents.
+
+## Constraints
+
+- Government contract with fixed scope and timeline expectations
+- Platform needed to integrate with multiple external service providers (bill payment processors, payout agencies, logistics systems) — each with their own APIs and availability guarantees
+- Financial transactions required strict security, audit trails, and reliable error handling
+- Two mobile platforms (Android and iOS) needed feature parity
+- The team at my co-founded company was small — everyone wore multiple hats
+
+## My Role
+
+**Solutions Architect + Scrum Master + Senior Developer.** As co-founder of the contracting company, I was responsible for everything: system architecture design, Scrum process leadership, hands-on development across the mobile apps and backend, and client communication with the government stakeholder.
+
+## The Architecture
+
+I designed a microservice architecture with a central API gateway pattern:
+
+**Mobile clients** (Android + iOS) → **CDN/Cloudflare** (SSL termination, DDoS protection) → **Varnish** (response caching) → **Load Balancer** → **Central Gateway API** → **Domain-specific service APIs**
+
+### Service Decomposition
+
+Rather than building a monolith, I split the backend into domain-aligned services:
+
+- **Accounts API** — user registration, verification, profile management, OAuth authentication
+- **Bills API** — bill payment integration with third-party payment centers and health insurance providers
+- **Payout API** — government agency disbursements (social welfare, humanitarian organizations)
+- **Money Transfer API** — postal money orders (electronic and paper-based)
+- **Logistics and Warehouse API** — freight forwarding, warehousing, value-added services
+- **Express Post API** — express mail tracking and management
+- **IEMS/DEMS API** — internal and domestic express mail systems
+
+Each service owned its domain logic and external provider integrations independently.
+
+### Back-Office System (MOAS)
+
+A separate web application for administrators: user management, analytics dashboard, maintenance mode controls, and internal service APIs. This gave operations staff visibility into the platform without touching the customer-facing mobile apps.
+
+## Key Decisions
+
+- **API gateway as single entry point:** All mobile traffic routes through one gateway API that fans out to domain services. This simplified mobile client development (one base URL, one auth flow) and gave us a single point for rate limiting, logging, and circuit breaking.
+- **Varnish caching layer:** Service catalog data, postal ID locations, and static content rarely change but get requested constantly. Varnish in front of the gateway eliminated redundant backend calls for read-heavy, write-rare data.
+- **MongoDB for flexible document schemas:** Each service domain had different data shapes — mail tracking looks nothing like a bill payment record. Document storage let each service model its data naturally without forcing everything into a single relational schema.
+- **OAuth as a standalone service:** Authentication was extracted into its own service rather than embedded in the gateway. This meant the back-office admin system and the mobile apps could share the same auth infrastructure with different permission scopes.
+
+## The Outcome
+
+- Designed and built a complete platform architecture covering 5 major service categories with dozens of sub-services
+- Delivered both Android and iOS mobile applications with feature parity
+- Integrated with multiple external service providers for bill payments, government payouts, and money transfers
+- Built a back-office administration system for operations staff
+- Platform reached near-MVP completion before the government discontinued funding
+
+## What I'd Do Differently
+
+I'd push for a phased delivery contract instead of a full-scope MVP. The platform tried to digitize every postal service simultaneously — mail, financial, logistics, postal IDs. If we had launched with just financial services (bills and payouts, the highest citizen demand) and expanded from there, the government would have had a working product generating value while we built the rest. A smaller initial scope might have sustained funding by demonstrating concrete results earlier.

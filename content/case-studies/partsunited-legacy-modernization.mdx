@@ -1,0 +1,63 @@
+---
+title: "From Owner-Modified OsCommerce to a Maintainable Symfony Platform"
+subtitle: "How I modernized a legacy e-commerce system without downtime, then handed it off to junior developers"
+slug: "partsunited-legacy-modernization"
+roles: ["solutions-architect", "software-architect", "senior-fullstack"]
+stack: ["PHP/Symfony", "OsCommerce", "MySQL"]
+domain: "ecommerce"
+featured: true
+order:
+  software-architect: 4
+  solutions-architect: 3
+  technical-lead: 5
+  scrum-master: 5
+  senior-fullstack: 1
+---
+
+## The Problem
+
+PartsUnited ran on an old OsCommerce installation that the business owner had been modifying himself over the years. He had enough technical knowledge to make changes, but without engineering discipline the system had become a tangled mess — custom modifications layered on top of each other, no separation of concerns, and no documentation of what was changed or why. The codebase was fragile, difficult to extend, and a security risk running on vanilla PHP without modern framework protections.
+
+## Constraints
+
+- The business ran on this system daily — no downtime for a migration was acceptable
+- The owner was concerned that introducing a framework would slow the site down compared to vanilla PHP
+- Only the owner understood why many of the custom modifications existed — no documentation, no comments
+- The modernized system needed to be maintainable by junior developers after my engagement ended
+
+## My Role
+
+**Solutions Architect + Senior Developer.** I assessed the legacy system, planned the modernization strategy, rebuilt critical modules incrementally, and ensured the platform could be maintained by the team that followed me.
+
+## The Approach
+
+### Understanding Before Changing
+
+I spent substantial time each week with the CEO, walking through the system together. He was often the only person who knew why a particular modification existed — whether it was load-bearing business logic or a workaround that could be removed. This knowledge transfer was expensive in terms of his time but essential. Without it, I would have been guessing at business rules buried in uncommented code.
+
+### Incremental Modernization
+
+Rather than rewriting from scratch, I identified the most fragile and business-critical parts of the system, isolated them, and rebuilt them using Symfony behind the existing interfaces. Each modernized module was tested against existing behavior before replacing the old code. Parts of OsCommerce that worked fine stayed in place — the goal was to fix what was broken, not to rewrite what wasn't.
+
+### Addressing the Performance Concern
+
+The owner's biggest hesitation was performance. His instinct was that a framework adds overhead — and technically, it does. But I ran load tests comparing the old vanilla PHP paths against the new Symfony-powered modules. The results showed no apparent performance impact for real-world usage patterns. The framework overhead was negligible compared to database queries and network I/O that dominated response times.
+
+## Key Decisions
+
+- **Symfony over vanilla PHP:** The security components alone justified the switch — the legacy system had no CSRF protection, no input sanitization framework, and no authentication layer beyond custom session handling. Symfony's security component solved all of these out of the box.
+- **Incremental replacement over full rewrite:** The business couldn't afford to go offline. By modernizing module by module, the platform continued operating throughout the transition without a single migration day.
+- **Documentation as a deliverable:** As I rebuilt each module, I documented the business rules that had previously existed only in the owner's head. This was critical for the handoff to junior developers.
+
+## The Outcome
+
+- Platform modernized to Symfony without any downtime or disruption to daily operations
+- Codebase went from unmaintainable spaghetti to a structured, documented system that junior developers could extend
+- Security posture improved significantly through Symfony's built-in security components
+- Load tests confirmed no measurable performance degradation from the framework
+- The CEO could focus on the business instead of firefighting technical issues
+- Junior developers successfully continued development after my departure
+
+## What I'd Do Differently
+
+I'd establish automated testing earlier in the process. The load tests proved performance parity, but having integration tests from the start would have made each incremental replacement safer. I was relying on manual testing and the CEO's validation for correctness — automated tests would have reduced that dependency and given the junior developers a safety net for future changes.

@@ -1,0 +1,66 @@
+---
+title: "From Concept to Open-Source: A Workflow Engine for Payment Orchestration"
+subtitle: "Built a TypeScript task runner that automated cashiering and payment flows through configurable, sequential workflows"
+slug: "payment-workflow-automation-library"
+roles: ["senior-fullstack", "software-architect"]
+stack: ["TypeScript", "Node.js", "Promise-based Architecture"]
+domain: "fintech"
+featured: true
+order:
+  software-architect: 5
+  solutions-architect: 5
+  technical-lead: 3
+  scrum-master: 4
+  senior-fullstack: 2
+---
+
+## The Problem
+
+At Bayview Technologies, the cashiering and payment flow involved multiple sequential steps — validating transactions, calling third-party payment APIs, handling responses, and generating receipts. Each step depended on the previous one, and the order mattered. The existing implementation had these steps hardcoded in application logic, making it difficult to modify flows, add new payment methods, or handle edge cases without touching core code.
+
+## Constraints
+
+- Payment flows are sequential and order-dependent — step 3 depends on step 2's result
+- Third-party API calls introduce unpredictable latency and failure modes
+- Different payment methods required different step sequences but shared common operations
+- The solution needed to be reusable across projects, not tied to a single application
+
+## My Role
+
+**Senior Full Stack Developer.** The Solutions Architect conceived the idea of a workflow automation library to decouple payment flow definitions from their implementations. I materialized the concept — designed the architecture, built the library from scratch, and delivered a working tool the team could use across projects.
+
+## The Architecture
+
+I built Chores as a promise-based task runner with four core components:
+
+- **Registry (brain)** — validates and registers available tasks so workflows can only reference implemented operations
+- **Executor (kid)** — runs individual tasks with shared variables and stores results for downstream steps
+- **Orchestrator (mother)** — manages sequential execution, passing results between steps and handling the overall flow
+- **Commands** — JSON-defined workflow configurations that specify which tasks run, in what order, with what parameters
+
+### Workflow as Data
+
+The key architectural decision was making workflows data-driven. A payment flow is defined as a JSON configuration with steps, not as imperative code:
+
+Each step specifies a **key** (which task implementation to run), **options** (parameters for that step), and a **receiver** (where to store the result for downstream steps). This means adding a new payment method is a configuration change, not a code change.
+
+### Graceful Degradation
+
+If a workflow references a step that hasn't been implemented yet, it skips that step rather than failing. This allowed the team to define complete workflow configurations upfront and implement the individual steps incrementally — the workflow definition became the specification.
+
+## Key Decisions
+
+- **Promise-based sequential execution:** Payment steps must run in order — you can't generate a receipt before processing the payment. Promises provided clean sequential flow with proper error propagation, so a failure at any step cleanly rejects the entire workflow.
+- **Shared variable space:** All steps in a workflow access a shared variable context. This meant the payment validation step could store its result, and the API call step could read it — without the orchestrator needing to know the data shape.
+- **Library, not framework:** I built Chores as a standalone library with no opinion about the consuming application. It handles orchestration; the application defines what each task actually does. This made it reusable beyond the original payment use case.
+
+## The Outcome
+
+- Payment flow automation moved from hardcoded logic to configurable workflows
+- Adding new payment methods became a matter of defining steps in JSON and implementing the individual task handlers
+- The library was generic enough to be used beyond payment flows — any sequential workflow could be modeled with it
+- Published as an open-source package, making it available for reuse across projects
+
+## What I'd Do Differently
+
+I'd add built-in retry and timeout handling for the third-party API steps. Payment APIs fail in unpredictable ways — timeouts, partial successes, network errors. The current design leaves error handling to the consuming application, which means every project that uses Chores for payment flows needs to implement its own retry logic. Baking resilience patterns into the orchestrator would have made it more immediately useful for the payment use case that inspired it.
